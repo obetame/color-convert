@@ -1,6 +1,6 @@
 [package]
 name = "color-convert"
 version = "0.1.0"
-authors = ["wowo <zhouyuexie@gmail.com>"]
+authors = ["quietboy <zhouyuexie@gmail.com>"]
 
 [dependencies]
