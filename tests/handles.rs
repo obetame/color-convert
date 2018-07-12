@@ -41,13 +41,16 @@ mod tests {
 		let hex2 = "#ddd";
 
 		let setting = Setting::new("rgb", false, true, false);
+		let setting1 = Setting::new("rgb", false, false, false);
 
 		let hex_vec: Vec<&str> = handle::handle_hex_value(&hex, &setting);
 		let hex_vec1: Vec<&str> = handle::handle_hex_value(&hex1, &setting);
 		let hex_vec2: Vec<&str> = handle::handle_hex_value(&hex2, &setting);
+		let hex_vec3: Vec<&str> = handle::handle_hex_value(&hex, &setting1);
 
 		assert_eq!(vec!["f", "f", "f", "f", "f", "f", "8", "0"], hex_vec);
 		assert_eq!(vec!["c", "8", "c", "8", "c", "8"], hex_vec1);
 		assert_eq!(vec!["d", "d", "d", "d", "d", "d"], hex_vec2);
+		assert_eq!(vec![ "8", "0", "f", "f", "f", "f", "f", "f"], hex_vec3);
 	}
 }
