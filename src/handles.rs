@@ -7,8 +7,8 @@
 // ].iter().cloned().collect();
 
 pub mod map_name {
+	// color name convert to #ffffff
 	pub fn map_color_name(color_name: &str) -> &str {
-		// color name convert to #ffffff
 		let to_color = match color_name {
 			"AliceBlue" => "#F0F8FF",
 			"AntiqueWhite" => "#FAEBD7",
@@ -158,8 +158,8 @@ pub mod map_name {
 		to_color
 	}
 
+	// map color name to color name
 	pub fn map_name_to_name(color_name: &str) -> &str {
-		// map color name to color name
 		let to_color_name = match color_name {
 			"blue" => "Blue",
 			"pink" => "Pink",
@@ -354,5 +354,38 @@ pub mod map_name {
 			_ => panic!("[color-convert] map_rgb not match match_number value.")
 		};
 		match_char
+	}
+}
+
+pub mod handle {
+	use config::cc_config::Setting;
+	// hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
+	// return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
+	pub fn handle_hex_value<'a>(hex: &'a str, setting: &Setting) -> Vec<&'a str> {
+		let mut hex_vec: Vec<&'a str> = hex.split("").collect();
+		hex_vec.retain(|&x| x != "" && x != "#");
+
+		let mut return_vex: Vec<&'a str> = vec![];
+		match hex_vec.len() {
+			3 => {
+				for item in &hex_vec {
+					// let value: &'a str = &format!("{}{}", item, item);
+					// let upper_item: &'a str = item.to_ascii_uppercase();
+					return_vex.push(item);
+					return_vex.push(item);
+				}
+			},
+			6 => return_vex.extend(&hex_vec),
+			8 => {
+				if setting.is_android {
+					return_vex.extend(&hex_vec[2..]);
+					return_vex.extend(&hex_vec[0..2]);
+				} else {
+					return_vex.extend(&hex_vec);
+				}
+			},
+			_ => panic!("[color-convert] hex value length must one of in [3, 6, 8]")
+		}
+		return_vex
 	}
 }
