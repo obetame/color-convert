@@ -4,6 +4,7 @@ extern crate color_convert;
 mod tests {
 	use color_convert::handles::map_name;
 	use color_convert::config::cc_config::Setting;
+	use color_convert::handles::handle;
 
 	#[test]
 	fn test_map_color_name() {
@@ -21,7 +22,7 @@ mod tests {
 
 	#[test]
 	fn test_map_hex() {
-		let hex = 'B';
+		let hex = "B";
 		let _to_char = map_name::map_hex(&hex);
 		assert_eq!(_to_char, 11);
 	}
@@ -33,7 +34,6 @@ mod tests {
 		let _to_char = map_name::map_rgb(number); // will panic
 	}
 
-	use color_convert::handles::handle;
 	#[test]
 	fn test_hex_handle() {
 		let hex = "#80ffffff";
