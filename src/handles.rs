@@ -306,7 +306,6 @@ pub mod map_name {
 			"oldlace" => "OldLace",
 			_ => panic!("[color-convert] map_name_to_name not match color_name value.")
 		};
-
 		to_color_name
 	}
 
@@ -333,32 +332,33 @@ pub mod map_name {
 		match_number
 	}
 
-	pub fn map_rgb(match_number: usize) -> char {
-		let match_char = match match_number {
-			0 => '0',
-			1 => '1',
-			2 => '2',
-			3 => '3',
-			4 => '4',
-			5 => '5',
-			6 => '6',
-			7 => '7',
-			8 => '8',
-			9 => '9',
-			10 => 'A',
-			11 => 'B',
-			12 => 'C',
-			13 => 'D',
-			14 => 'E',
-			15 => 'F',
+	pub fn map_rgb<'a>(match_number: &'a usize) -> &'a str {
+		let match_str: &'a str = match *match_number {
+			0 => "0",
+			1 => "1",
+			2 => "2",
+			3 => "3",
+			4 => "4",
+			5 => "5",
+			6 => "6",
+			7 => "7",
+			8 => "8",
+			9 => "9",
+			10 => "A",
+			11 => "B",
+			12 => "C",
+			13 => "D",
+			14 => "E",
+			15 => "F",
 			_ => panic!("[color-convert] map_rgb not match match_number value.")
 		};
-		match_char
+		match_str
 	}
 }
 
 pub mod handle {
 	use config::cc_config::Setting;
+	use handles::map_name;
 	// hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 	// return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
 	pub fn handle_hex_value<'a>(hex: &'a str, setting: &Setting) -> Vec<&'a str> {
@@ -387,5 +387,20 @@ pub mod handle {
 			_ => panic!("[color-convert] hex value length must one of in [3, 6, 8]")
 		}
 		return_vex
+	}
+
+	// transparency value convert to hexadecimal
+	// 0.5 -> "80"
+	pub fn handel_alpha_to_hexadecimal(alpha: f32) -> String {
+		if alpha == 1f32 || alpha > 1f32 {
+			return String::from("FF");
+		}
+
+		let to_deciaml = alpha * 256f32;
+		let b = (to_deciaml % 16f32) as usize;
+		let a = (to_deciaml / 16f32 % 16f32) as usize;
+
+		// let value: &'a str = &*format!("{}{}", map_name::map_rgb(a), map_name::map_rgb(b));
+		map_name::map_rgb(&a).to_owned() + map_name::map_rgb(&b)
 	}
 }

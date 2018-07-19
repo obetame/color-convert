@@ -5,6 +5,7 @@ mod tests {
 	use color_convert::handles::map_name;
 	use color_convert::config::cc_config::Setting;
 	use color_convert::handles::handle;
+	use color_convert::utils::common;
 
 	#[test]
 	fn test_map_color_name() {
@@ -28,10 +29,10 @@ mod tests {
 	}
 
 	#[test]
-	#[should_panic(expected = "map_rgb not match match_number value")]
+	// #[should_panic(expected = "map_rgb not match match_number value")]
 	fn test_map_rgb() {
-		let number = 20;
-		let _to_char = map_name::map_rgb(number); // will panic
+		let number = 6;
+		let _to_char = map_name::map_rgb(&number); // will panic
 	}
 
 	#[test]
@@ -52,5 +53,14 @@ mod tests {
 		assert_eq!(vec!["c", "8", "c", "8", "c", "8"], hex_vec1);
 		assert_eq!(vec!["d", "d", "d", "d", "d", "d"], hex_vec2);
 		assert_eq!(vec![ "8", "0", "f", "f", "f", "f", "f", "f"], hex_vec3);
+	}
+
+	#[test]
+	fn test_handel_alpha_to_hexadecimal() {
+		let alpha = common::get_rgba_alpha_value("rgba(1,1,1,.5)");
+
+		let hex_alpha = handle::handel_alpha_to_hexadecimal(alpha);
+
+		assert_eq!(hex_alpha, String::from("80"));
 	}
 }
