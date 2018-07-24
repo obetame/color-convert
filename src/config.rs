@@ -3,7 +3,7 @@ pub mod cc_config {
 	#[derive(Debug)]
 	pub struct Setting {
 		pub convert_mode: String,
-		pub capitization: bool,
+		pub is_capitization: bool,
 		pub is_android: bool,
 		pub loss_transparent: bool
 	}
@@ -12,9 +12,9 @@ pub mod cc_config {
 		pub fn new(mode: &str, upper: bool, is_android: bool, loss_transparent: bool) -> Setting {
 			Setting {
 				convert_mode: mode.to_string(),
-				capitization: upper,
-				is_android: is_android,
-				loss_transparent: loss_transparent
+				is_capitization: upper,
+				is_android,
+				loss_transparent
 			}
 		}
 	}
