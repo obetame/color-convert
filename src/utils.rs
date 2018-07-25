@@ -54,7 +54,7 @@ pub mod common {
 				let alpha: String = vec_value[3].replace(")", "");
 				match alpha.parse::<f32>() {
 					Ok(value) => value,
-					Err(_error) => panic!("{} value is not a number, unable to convert to f32"),
+					Err(_error) => panic!("alpha value is not a number, unable to convert to f32"),
 				}
 			},
 			_ => panic!("{} value is not formatted correctly.")
