@@ -15,8 +15,8 @@ mod tests {
 		assert_eq!(color_mode::ColorMode::RGBA("rgba(1,2,3,.9)"), data);
 		assert_eq!(color_mode::ColorMode::HSLA("hsla(1,2,3,.9)"), data1);
 		
-		assert!(color_mode::ColorMode::RGB("rgba(1,2,3,.9)") != data);
-		assert!(color_mode::ColorMode::HSL("hsla(1,2,3,.9)") != data1);
+		assert_ne!(color_mode::ColorMode::RGB("rgba(1,2,3,.9)"), data);
+		assert_ne!(color_mode::ColorMode::HSL("hsla(1,2,3,.9)"), data1);
 	}
 
 	#[test]
