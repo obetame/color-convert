@@ -6,6 +6,7 @@ mod tests {
 	use color_convert::config::color_mode;
 	use color_convert::config::cc_config::Setting;
 	use color_convert::handles::handle;
+	use std::panic;
 	
 	#[test]
 	fn test_utils_get_color_mode() {
@@ -47,9 +48,15 @@ mod tests {
 	}
 
 	#[test]
-	#[should_panic]
 	fn test_utils_get_rgba_alpha_value_fail() {
-		let data = common::get_rgba_alpha_value("rgba(1,1,1,b)");
-		let data1 = common::get_rgba_alpha_value("rgba(1,1)");
+		panic::set_hook(Box::new(|_info| {
+			println!("catch error args")
+		}));
+
+		let result = panic::catch_unwind(|| {
+			let _data1 = common::get_rgba_alpha_value("rgba(1,1)");
+			let _data = common::get_rgba_alpha_value("rgba(1,1,1,b)");
+		});
+		assert!(result.is_err());
 	}
 }
