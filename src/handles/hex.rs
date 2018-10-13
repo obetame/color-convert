@@ -1,5 +1,6 @@
 use config::Setting;
-use handles::map;
+//use handles::map;
+
 // hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 // return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
 pub fn handle_hex_value<'a>(hex: &'a str, setting: &Setting) -> Vec<&'a str> {
@@ -30,17 +31,3 @@ pub fn handle_hex_value<'a>(hex: &'a str, setting: &Setting) -> Vec<&'a str> {
 	return_vex
 }
 
-// transparency value convert to hexadecimal
-// 0.5 -> "80"
-pub fn handel_alpha_to_hexadecimal(alpha: f32) -> String {
-	if alpha == 1f32 || alpha > 1f32 {
-		return String::from("FF");
-	}
-
-	let to_deciaml = alpha * 256f32;
-	let b = (to_deciaml % 16f32) as usize;
-	let a = (to_deciaml / 16f32 % 16f32) as usize;
-
-	// let value: &'a str = &*format!("{}{}", map::map_rgb(a), map::map_rgb(b));
-	map::map_rgb(&a).to_owned() + map::map_rgb(&b)
-}

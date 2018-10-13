@@ -59,4 +59,13 @@ mod tests {
 		});
 		assert!(result.is_err());
 	}
+
+	#[test]
+	fn test_handel_alpha_to_hexadecimal() {
+		let alpha = utils::get_rgba_alpha_value("rgba(1,1,1,.5)");
+
+		let hex_alpha = utils::handel_alpha_to_hexadecimal(alpha);
+
+		assert_eq!(hex_alpha, String::from("80"));
+	}
 }
