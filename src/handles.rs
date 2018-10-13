@@ -357,7 +357,7 @@ pub mod map_name {
 }
 
 pub mod handle {
-	use config::cc_config::Setting;
+	use config::Setting;
 	use handles::map_name;
 	// hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 	// return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...

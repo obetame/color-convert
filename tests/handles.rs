@@ -3,9 +3,9 @@ extern crate color_convert;
 #[cfg(test)]
 mod tests {
 	use color_convert::handles::map_name;
-	use color_convert::config::cc_config::Setting;
+	use color_convert::config::Setting;
 	use color_convert::handles::handle;
-	use color_convert::utils::common;
+	use color_convert::utils;
 
 	#[test]
 	fn test_map_color_name() {
@@ -57,7 +57,7 @@ mod tests {
 
 	#[test]
 	fn test_handel_alpha_to_hexadecimal() {
-		let alpha = common::get_rgba_alpha_value("rgba(1,1,1,.5)");
+		let alpha = utils::get_rgba_alpha_value("rgba(1,1,1,.5)");
 
 		let hex_alpha = handle::handel_alpha_to_hexadecimal(alpha);
 
