@@ -2,29 +2,29 @@ extern crate color_convert;
 
 #[cfg(test)]
 mod tests {
-	use color_convert::handles::map_name;
 	use color_convert::config::Setting;
-	use color_convert::handles::handle;
+	use color_convert::handles::map;
+	use color_convert::handles::hex;
 	use color_convert::utils;
 
 	#[test]
 	fn test_map_color_name() {
 		let color = "Sienna";
-		let to_color = map_name::map_color_name(&color);
+		let to_color = map::map_color_name(&color);
 		assert_eq!(to_color, "#A0522D");
 	}
 
 	#[test]
-	fn test_map_color_name_uper() {
+	fn test_map_color_name_upper() {
 		let color = "sienna";
-		let to_color = map_name::map_name_to_name(&color);
+		let to_color = map::map_name_to_name(&color);
 		assert_eq!(to_color, "Sienna");
 	}
 
 	#[test]
 	fn test_map_hex() {
 		let hex = "B";
-		let _to_char = map_name::map_hex(&hex);
+		let _to_char = map::map_hex(&hex);
 		assert_eq!(_to_char, 11);
 	}
 
@@ -32,7 +32,7 @@ mod tests {
 	// #[should_panic(expected = "map_rgb not match match_number value")]
 	fn test_map_rgb() {
 		let number = 6;
-		let _to_char = map_name::map_rgb(&number); // will panic
+		let _to_char = map::map_rgb(&number); // will panic
 	}
 
 	#[test]
@@ -44,10 +44,10 @@ mod tests {
 		let setting = Setting::new("rgb", false, true, false);
 		let setting1 = Setting::new("rgb", false, false, false);
 
-		let hex_vec: Vec<&str> = handle::handle_hex_value(&hex, &setting);
-		let hex_vec1: Vec<&str> = handle::handle_hex_value(&hex1, &setting);
-		let hex_vec2: Vec<&str> = handle::handle_hex_value(&hex2, &setting);
-		let hex_vec3: Vec<&str> = handle::handle_hex_value(&hex, &setting1);
+		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex, &setting);
+		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex1, &setting);
+		let hex_vec2: Vec<&str> = hex::handle_hex_value(&hex2, &setting);
+		let hex_vec3: Vec<&str> = hex::handle_hex_value(&hex, &setting1);
 
 		assert_eq!(vec!["f", "f", "f", "f", "f", "f", "8", "0"], hex_vec);
 		assert_eq!(vec!["c", "8", "c", "8", "c", "8"], hex_vec1);
@@ -59,7 +59,7 @@ mod tests {
 	fn test_handel_alpha_to_hexadecimal() {
 		let alpha = utils::get_rgba_alpha_value("rgba(1,1,1,.5)");
 
-		let hex_alpha = handle::handel_alpha_to_hexadecimal(alpha);
+		let hex_alpha = hex::handel_alpha_to_hexadecimal(alpha);
 
 		assert_eq!(hex_alpha, String::from("80"));
 	}

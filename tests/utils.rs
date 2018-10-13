@@ -5,7 +5,7 @@ mod tests {
 	use color_convert::utils;
 	use color_convert::config::ColorMode;
 	use color_convert::config::Setting;
-	use color_convert::handles::handle;
+	use color_convert::handles::hex;
 	use std::panic;
 	
 	#[test]
@@ -26,8 +26,8 @@ mod tests {
 		let hex1 = "#ffffff80";
 		let setting = Setting::new("rgb", false, true, false);
 		let setting1 = Setting::new("rgb", false, false, false);
-		let hex_vec: Vec<&str> = handle::handle_hex_value(&hex1, &setting1);
-		let hex_vec1: Vec<&str> = handle::handle_hex_value(&hex, &setting);
+		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1);
+		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting);
 
 		let data = utils::get_hex_alpha_value(&hex_vec, &setting);
 		let data1 = utils::get_hex_alpha_value(&hex_vec1, &setting1);

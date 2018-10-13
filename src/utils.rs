@@ -1,7 +1,7 @@
 // use std::ascii::AsciiExt;
 use config::ColorMode;
 use config::Setting;
-use handles::map_name;
+use handles::map;
 
 // get color mode
 // "rgb(1,1,1)" -> ColorMode::RGB("rgb(1,1,1)")
@@ -35,8 +35,8 @@ pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Setting) -> f32 {
 		&color[&color.len() - 2..]
 	};
 
-	let a: usize = map_name::map_hex(&*value[1].to_uppercase());
-	let b: usize = map_name::map_hex(&*value[0].to_uppercase());
+	let a: usize = map::map_hex(&*value[1].to_uppercase());
+	let b: usize = map::map_hex(&*value[0].to_uppercase());
 
 	((a + b * 16) as f32 / 255.0 * 10000.0).round() / 10000.0
 }
