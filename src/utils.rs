@@ -43,7 +43,7 @@ pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Setting) -> f32 {
 
 // Get rgba transparency value and convert to hexadecimal
 // "rgba(1,1,1,.5)" -> 0.5
-pub fn get_rgba_alpha_value(color: &str) -> f32 {
+pub fn get_rgba_alpha_value(color: &str) -> Result<f32, String> {
 	let vec_value: Vec<&str> = color.split(',').collect();
 
 	let result = match vec_value.len() {
@@ -52,13 +52,13 @@ pub fn get_rgba_alpha_value(color: &str) -> f32 {
 			let alpha: String = vec_value[3].replace(")", "");
 			match alpha.parse::<f32>() {
 				Ok(value) => value,
-				Err(_error) => panic!("alpha value is not a number, unable to convert to f32"),
+				Err(_error) => return Err(String::from("alpha value is not a number, unable to convert to f32")),
 			}
 		},
-		_ => panic!("{} value is not formatted correctly.")
+		_ => return Err(String::from("{} value is not formatted correctly."))
 	};
 
-	result
+	Ok(result)
 }
 
 // transparency value convert to hexadecimal

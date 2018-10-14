@@ -36,7 +36,7 @@ mod tests {
 	}
 
 	#[test]
-	fn test_hex_handle() -> Result<String, String> {
+	fn test_hex_handle() {
 		let hex = "#80ffffff";
 		let hex1 = "#c8c8c8";
 		let hex2 = "#ddd";
@@ -54,6 +54,5 @@ mod tests {
 		assert_eq!(vec!["c", "8", "c", "8", "c", "8"], hex_vec1);
 		assert_eq!(vec!["d", "d", "d", "d", "d", "d"], hex_vec2);
 		assert_eq!(vec![ "8", "0", "f", "f", "f", "f", "f", "f"], hex_vec3);
-		Ok(String::from("right"))
 	}
 }

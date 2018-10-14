@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c12e232-deb7-490d-8ed1-338cdc912c3f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/handles/hex.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/hex.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/handles.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/handles.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/utils.rs" afterDir="false" />
     </list>
@@ -42,26 +43,25 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="utils.rs" pinned="false" current-in-tab="false">
+          <file leaf-file-name="utils.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/utils.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="775">
-                  <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+                <state relative-caret-position="333">
+                  <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
                   <folding>
                     <element signature="n#!!block;n#get_color_mode#0" />
                     <element signature="n#!!block;n#get_hex_alpha_value#0" />
-                    <element signature="n#!!block;n#get_rgba_alpha_value#0" />
                     <element signature="n#!!block;n#handel_alpha_to_hexadecimal#0" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="hex.rs" pinned="false" current-in-tab="true">
+          <file leaf-file-name="hex.rs" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="348">
-                  <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+                <state relative-caret-position="279">
+                  <caret line="6" column="58" lean-forward="true" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
                 </state>
               </provider>
             </entry>
@@ -79,11 +79,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="handles.rs" pinned="false" current-in-tab="true">
+          <file leaf-file-name="handles.rs" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tests/handles.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1922">
-                  <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
+                <state relative-caret-position="660">
+                  <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
                 </state>
               </provider>
             </entry>
@@ -101,11 +101,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="utils.rs" pinned="false" current-in-tab="false">
+          <file leaf-file-name="utils.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/utils.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1286">
-                  <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+                <state relative-caret-position="546">
+                  <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
                 </state>
               </provider>
             </entry>
@@ -148,8 +148,8 @@
         <option value="$PROJECT_DIR$/src/handles/map.rs" />
         <option value="$PROJECT_DIR$/src/handles.rs" />
         <option value="$PROJECT_DIR$/src/handles/mod.rs" />
-        <option value="$PROJECT_DIR$/src/utils.rs" />
         <option value="$PROJECT_DIR$/src/handles/hex.rs" />
+        <option value="$PROJECT_DIR$/src/utils.rs" />
         <option value="$PROJECT_DIR$/tests/handles.rs" />
         <option value="$PROJECT_DIR$/tests/utils.rs" />
       </list>
@@ -350,12 +350,12 @@
       <workItem from="1539265414274" duration="109000" />
       <workItem from="1539265551697" duration="6000" />
       <workItem from="1539265583260" duration="338000" />
-      <workItem from="1539409886727" duration="9540000" />
+      <workItem from="1539409886727" duration="10211000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31871000" />
+    <option name="totallyTimeSpent" value="32542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -705,20 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lib.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/handles/mod.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -743,19 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#get_color_mode#0" />
-            <element signature="n#!!block;n#get_hex_alpha_value#0" />
-            <element signature="n#!!block;n#get_rgba_alpha_value#0" />
-            <element signature="n#!!block;n#handel_alpha_to_hexadecimal#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/lib.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -767,24 +740,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/utils.rs">
+    <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1286">
-          <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        <state relative-caret-position="279">
+          <caret line="6" column="58" lean-forward="true" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/handles/mod.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lib.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+          <folding>
+            <element signature="n#!!block;n#get_color_mode#0" />
+            <element signature="n#!!block;n#get_hex_alpha_value#0" />
+            <element signature="n#!!block;n#handel_alpha_to_hexadecimal#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/handles.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1922">
-          <caret line="50" column="66" selection-start-line="50" selection-start-column="66" selection-end-line="50" selection-end-column="66" />
+        <state relative-caret-position="660">
+          <caret line="55" column="72" selection-start-line="55" selection-start-column="72" selection-end-line="55" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
+    <entry file="file://$PROJECT_DIR$/tests/utils.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        <state relative-caret-position="546">
+          <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
         </state>
       </provider>
     </entry>

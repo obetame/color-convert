@@ -38,9 +38,9 @@ mod tests {
 
 	#[test]
 	fn test_utils_get_rgba_alpha_value() {
-		let data = utils::get_rgba_alpha_value("rgba(1,1,1,.5)");
-		let data1 = utils::get_rgba_alpha_value("rgba(1,1,1,0.5)");
-		let data2 = utils::get_rgba_alpha_value("rgb(1,1,1)");
+		let data = utils::get_rgba_alpha_value("rgba(1,1,1,.5)").unwrap();
+		let data1 = utils::get_rgba_alpha_value("rgba(1,1,1,0.5)").unwrap();
+		let data2 = utils::get_rgba_alpha_value("rgb(1,1,1)").unwrap();
 
 		assert_eq!(data, 0.5);
 		assert_eq!(data1, 0.5);
@@ -54,15 +54,15 @@ mod tests {
 		}));
 
 		let result = panic::catch_unwind(|| {
-			let _data1 = utils::get_rgba_alpha_value("rgba(1,1)");
-			let _data = utils::get_rgba_alpha_value("rgba(1,1,1,b)");
+			let _data1 = utils::get_rgba_alpha_value("rgba(1,1)").unwrap();
+			let _data = utils::get_rgba_alpha_value("rgba(1,1,1,b)").unwrap();
 		});
 		assert!(result.is_err());
 	}
 
 	#[test]
 	fn test_handel_alpha_to_hexadecimal() {
-		let alpha = utils::get_rgba_alpha_value("rgba(1,1,1,.5)");
+		let alpha = utils::get_rgba_alpha_value("rgba(1,1,1,.5)").unwrap();
 
 		let hex_alpha = utils::handel_alpha_to_hexadecimal(alpha);
 
