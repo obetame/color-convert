@@ -46,12 +46,11 @@
           <file leaf-file-name="utils.rs" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/utils.rs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="333">
-                  <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
+                <state relative-caret-position="165">
+                  <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
                   <folding>
                     <element signature="n#!!block;n#get_color_mode#0" />
                     <element signature="n#!!block;n#get_hex_alpha_value#0" />
-                    <element signature="n#!!block;n#handel_alpha_to_hexadecimal#0" />
                   </folding>
                 </state>
               </provider>
@@ -350,12 +349,12 @@
       <workItem from="1539265414274" duration="109000" />
       <workItem from="1539265551697" duration="6000" />
       <workItem from="1539265583260" duration="338000" />
-      <workItem from="1539409886727" duration="10211000" />
+      <workItem from="1539409886727" duration="10290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32542000" />
+    <option name="totallyTimeSpent" value="32621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -370,7 +369,7 @@
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.32862744" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32974482" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="right" x="-1217" y="-176" width="1151" height="901" id="Run" order="10" type="WINDOWED" visible="true" weight="0.22911549" />
+      <window_info anchor="right" x="-1217" y="-176" width="1151" height="901" id="Run" order="10" type="WINDOWED" weight="0.22911549" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3299532" />
       <window_info id="Capture Tool" order="5" />
@@ -761,18 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="51" column="52" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!block;n#get_color_mode#0" />
-            <element signature="n#!!block;n#get_hex_alpha_value#0" />
-            <element signature="n#!!block;n#handel_alpha_to_hexadecimal#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/handles.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -784,6 +771,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="64" column="14" lean-forward="true" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!block;n#get_color_mode#0" />
+            <element signature="n#!!block;n#get_hex_alpha_value#0" />
+          </folding>
         </state>
       </provider>
     </entry>
