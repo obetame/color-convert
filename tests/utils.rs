@@ -26,8 +26,8 @@ mod tests {
 		let hex1 = "#ffffff80";
 		let setting = Setting::new("rgb", false, true, false);
 		let setting1 = Setting::new("rgb", false, false, false);
-		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1);
-		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting);
+		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1).unwrap();
+		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting).unwrap();
 
 		let data = utils::get_hex_alpha_value(&hex_vec, &setting);
 		let data1 = utils::get_hex_alpha_value(&hex_vec1, &setting1);
