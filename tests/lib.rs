@@ -2,7 +2,7 @@ extern crate color_convert;
 
 #[cfg(test)]
 mod tests {
-	use color_convert::color_convert;
+	use color_convert;
 
 	#[test]
 	fn rgb_to_hex() {
