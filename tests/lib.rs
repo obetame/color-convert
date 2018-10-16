@@ -6,6 +6,7 @@ mod tests {
 
 	#[test]
 	fn rgb_to_hex() {
-		let _config_struct = color_convert::convert("rgb(0,0,0)", "hex");
+		let _to_hex = color_convert::convert("rgb(0,0,0)", "hex");
+		let _to_rgb = color_convert::convert("#fff", "rgb");
 	}
 }
