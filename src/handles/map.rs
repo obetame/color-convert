@@ -301,7 +301,8 @@ pub fn map_name_to_name(color_name: &str) -> &str {
 }
 
 pub fn map_hex(match_char: &str) -> usize {
-	let match_number = match match_char {
+	let upper_char = match_char.to_uppercase();
+	let match_number = match upper_char.as_str() {
 		"A" => 10,
 		"B" => 11,
 		"C" => 12,

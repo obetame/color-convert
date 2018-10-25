@@ -2,9 +2,9 @@ extern crate color_convert;
 
 #[cfg(test)]
 mod tests {
-	use color_convert::config::Setting;
+//	use color_convert::config::Color;
 	use color_convert::handles::map;
-	use color_convert::handles::hex;
+//	use color_convert::handles::hex;
 //	use color_convert::utils;
 
 	#[test]

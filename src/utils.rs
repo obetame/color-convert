@@ -1,34 +1,12 @@
 // use std::ascii::AsciiExt;
-use config::ColorMode;
-use config::Setting;
+//use config::ColorMode;
+use color::Color;
 use handles::map;
-
-// get color mode
-// "rgb(1,1,1)" -> ColorMode::RGB("rgb(1,1,1)")
-pub fn get_color_mode(color: &str) -> ColorMode {
-	let upper_color = color.to_ascii_uppercase();
-
-	if upper_color.contains("RGBA") {
-		ColorMode::RGBA(color)
-	} else if upper_color.contains("RGB") {
-		ColorMode::RGB(color)
-	} else if upper_color.contains("HSLA") {
-		ColorMode::HSLA(color)
-	} else if upper_color.contains("HSL") {
-		ColorMode::HSL(color)
-	} else if upper_color.contains("CMYK") {
-		ColorMode::CMYK(color)
-	} else if upper_color.contains("HSV") {
-		ColorMode::HSV(color)
-	} else {
-		ColorMode::HEX(color)
-	}
-}
 
 // Get hex's transparency value and convert to decimal
 // ['8','0','f','f','f','f','f','f'] is_android = true -> 0.5
 // ['f','f','f','f','f','f','8','0'] is_android = false -> 0.5
-pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Setting) -> f32 {
+pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Color) -> f32 {
 	let value: &[&str] = if setting.is_android {
 		&color[..2]
 	} else {

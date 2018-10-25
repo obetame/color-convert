@@ -3,29 +3,16 @@ extern crate color_convert;
 #[cfg(test)]
 mod tests {
 	use color_convert::utils;
-	use color_convert::config::ColorMode;
-	use color_convert::config::Setting;
+	use color_convert::color::Color;
 	use color_convert::handles::hex;
 	use std::panic;
-	
-	#[test]
-	fn test_utils_get_color_mode() {
-		let data = utils::get_color_mode("rgba(1,2,3,.9)");
-		let data1 = utils::get_color_mode("hsla(1,2,3,.9)");
-		
-		assert_eq!(ColorMode::RGBA("rgba(1,2,3,.9)"), data);
-		assert_eq!(ColorMode::HSLA("hsla(1,2,3,.9)"), data1);
-		
-		assert_ne!(ColorMode::RGB("rgba(1,2,3,.9)"), data);
-		assert_ne!(ColorMode::HSL("hsla(1,2,3,.9)"), data1);
-	}
 
 	#[test]
 	fn test_utils_get_hex_alpha_value() {
 		let hex = "#80ffffff";
 		let hex1 = "#ffffff80";
-		let setting = Setting::new("rgb", false, true, false);
-		let setting1 = Setting::new("rgb", false, false, false);
+		let setting = Color::new("rgb", false, true, false);
+		let setting1 = Color::new("rgb", false, false, false);
 		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1).unwrap();
 		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting).unwrap();
 

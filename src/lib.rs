@@ -1,4 +1,4 @@
-pub mod config;
+pub mod color;
 pub mod handles;
 pub mod utils;
 
