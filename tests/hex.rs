@@ -30,19 +30,25 @@ mod tests {
 
 	#[test]
 	fn test_hex2rgb() {
-		let hex = "#80ffffff";
-		let hex1 = "#c8c8c8";
-		let hex2 = "#ddd";
+		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let hex_result = vec![
+			"rgb(128,255,255)", "rgb(255,255,255)", "rgba(255,255,255,0.50)",
+			"rgb(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)",
+			"rgb(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)",
+			"rgb(255,255,255)", "rgb(255,255,128)", "rgba(255,255,128,1.00)"
+		];
 
-		let setting = Color::new("rgb", false, true, false);
-		let setting1 = Color::new("rgb", false, false, false);
+		for (index, color) in hex_vec.iter().enumerate() {
+			let mut color = Color::new(color, false, false, false);
 
-		let rgb1 = hex::hex2rgb(&hex, &setting).unwrap();
-		let rgb2 = hex::hex2rgb(&hex1, &setting).unwrap();
-		let rgb3 = hex::hex2rgb(&hex2, &setting1).unwrap();
-
-		println!("{:?}", rgb1);
-		println!("{:?}", rgb2);
-		println!("{:?}", rgb3);
+			for i in 0..3 {
+				match i {
+					0 => assert_eq!(color.upper(true).to_rgb().unwrap(), hex_result[index * 3]),
+					1 => assert_eq!(color.android(true).to_rgb().unwrap(), hex_result[index * 3 + 1]),
+					2 => assert_eq!(color.alpha(true).to_rgb().unwrap(), hex_result[index * 3 + 2]),
+					_ => println!("noting")
+				}
+			}
+		}
 	}
 }

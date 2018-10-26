@@ -3,7 +3,7 @@ use handles::map;
 
 // hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 // return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
-pub fn handle_hex_value<'a>(hex: &'a str, setting: &Color) -> Result<Vec<&'a str>, &'static str> {
+pub fn handle_hex_value<'a>(hex: &'a str, color: &Color) -> Result<Vec<&'a str>, &'static str> {
 	let mut hex_vec: Vec<&'a str> = hex.split("").collect();
 	hex_vec.retain(|&x| x != "" && x != "#");
 
@@ -18,7 +18,7 @@ pub fn handle_hex_value<'a>(hex: &'a str, setting: &Color) -> Result<Vec<&'a str
 		},
 		6 => return_vex.extend(&hex_vec),
 		8 => {
-			if setting.is_android {
+			if color.is_android {
 				return_vex.extend(&hex_vec[2..]);
 				return_vex.extend(&hex_vec[0..2]);
 			} else {
@@ -30,23 +30,29 @@ pub fn handle_hex_value<'a>(hex: &'a str, setting: &Color) -> Result<Vec<&'a str
 	Ok(return_vex)
 }
 
-pub fn hex2rgb(hex: &str, setting: &Color) -> Result<String, &'static str> {
-	let hex_vec = handle_hex_value(&hex, &setting)?;
+pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
+	let hex_vec = handle_hex_value(&hex, &color)?;
 	let mut rgb_string = String::new();
 	let tool_array: [usize; 3] = [0, 2, 4];
 
-	if hex_vec.len() == 8 {
-
-	}
-
 	for n in tool_array.iter() {
 		let data = map::map_hex(hex_vec[*n]) * 16 + map::map_hex(hex_vec[*n + 1]);
-		rgb_string.push_str(&data.to_string());
+		rgb_string.push_str(&format!("{}", data));
 		rgb_string.push(',');
 	}
 
-	if setting.is_android {
-		rgb_string.push_str("rgb(")
+	if color.is_alpha {
+		rgb_string.insert_str(0, "rgba(");
+		if hex_vec.len() == 8 {
+			let data = map::map_hex(hex_vec[6]) * 16 + map::map_hex(hex_vec[7]);
+			rgb_string.push_str(&format!("{:.2})", data as f32 / 255f32));
+		} else {
+			rgb_string.push_str("1)");
+		}
+	} else {
+		rgb_string.insert_str(0, "rgb(");
+		rgb_string.pop();
+		rgb_string.push_str(")");
 	}
 
 	Ok(rgb_string)

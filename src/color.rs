@@ -1,3 +1,5 @@
+use handles::hex;
+
 // color define
 #[derive(Debug)]
 pub struct Color<'a> {
@@ -7,12 +9,34 @@ pub struct Color<'a> {
 	pub is_alpha: bool
 }
 impl<'a> Color<'a> {
-	pub fn new(mode: &str, is_upper: bool, is_android: bool, is_alpha: bool) -> Color {
+	// new one Color instance
+	pub fn new(mode: &'a str, is_upper: bool, is_android: bool, is_alpha: bool) -> Self {
 		Color {
 			to_mode: ColorMode::new(mode),
 			is_upper,
 			is_android,
 			is_alpha
+		}
+	}
+
+	// config Color config [is_upper, is_android, is_alpha]
+	pub fn upper(&mut self, is_upper: bool) -> &Self {
+		self.is_upper = is_upper;
+		self
+	}
+	pub fn android(&mut self, is_android: bool) -> &Self {
+		self.is_android = is_android;
+		self
+	}
+	pub fn alpha(&mut self, is_alpha: bool) -> &Self {
+		self.is_alpha = is_alpha;
+		self
+	}
+
+	pub fn to_rgb(&self) -> Result<String, &'static str> {
+		match self.to_mode {
+			ColorMode::HEX(color) => hex::hex2rgb(color, self),
+			_ => Err("noting to match")
 		}
 	}
 }
