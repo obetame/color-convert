@@ -4,10 +4,10 @@ use color::Color;
 use handles::map;
 
 // Get hex's transparency value and convert to decimal
-// ['8','0','f','f','f','f','f','f'] is_android = true -> 0.5
-// ['f','f','f','f','f','f','8','0'] is_android = false -> 0.5
+// ['8','0','f','f','f','f','f','f'] to_android = true -> 0.5
+// ['f','f','f','f','f','f','8','0'] to_android = false -> 0.5
 pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Color) -> f32 {
-	let value: &[&str] = if setting.is_android {
+	let value: &[&str] = if setting.to_android {
 		&color[..2]
 	} else {
 		&color[&color.len() - 2..]

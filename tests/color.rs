@@ -6,12 +6,12 @@ mod tests {
 	use color_convert::color::ColorMode;
 	
 	#[test]
-	fn test_config() {
-		let config_struct = Color::new("rgb(1,1,1)", false, false, false);
-		assert_eq!(config_struct.to_mode, ColorMode::new("rgb(1,1,1)"));
-		assert_eq!(config_struct.is_upper, false);
-		assert_eq!(config_struct.is_android, false);
-		assert_eq!(config_struct.is_alpha, false);
+	fn test_color() {
+		let color = Color::new("rgb(1,1,1)", false, false, false);
+		assert_eq!(color.mode, ColorMode::new("rgb(1,1,1)"));
+		assert_eq!(color.to_upper, false);
+		assert_eq!(color.to_android, false);
+		assert_eq!(color.to_alpha, false);
 	}
 
 	#[test]

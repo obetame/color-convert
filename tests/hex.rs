@@ -50,4 +50,27 @@ mod tests {
 			}
 		}
 	}
+
+	#[test]
+	fn test_hex2hex() {
+		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let hex_result = vec![
+			"#80FFFF", "#ffffff", "#80ffffff",
+			"#C8C8C8", "#c8c8c8", "#c8c8c8ff",
+			"#DDDDDD", "#dddddd", "#ddddddff",
+			"#FFFFFF", "#ffff80", "#ffffff80"
+		];
+
+		for (index, color) in hex_vec.iter().enumerate() {
+			for i in 0..3 {
+				let mut color = Color::new(color, false, false, false);
+				match i {
+					0 => assert_eq!(color.upper(true).to_hex().unwrap(), hex_result[index * 3]),
+					1 => assert_eq!(color.android(true).to_hex().unwrap(), hex_result[index * 3 + 1]),
+					2 => assert_eq!(color.alpha(true).to_hex().unwrap(), hex_result[index * 3 + 2]),
+					_ => println!("noting")
+				}
+			}
+		}
+	}
 }

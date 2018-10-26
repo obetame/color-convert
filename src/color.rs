@@ -3,39 +3,55 @@ use handles::hex;
 // color define
 #[derive(Debug)]
 pub struct Color<'a> {
-	pub to_mode: ColorMode<'a>,
-	pub is_upper: bool,
-	pub is_android: bool,
-	pub is_alpha: bool
+	pub mode: ColorMode<'a>,
+	pub to_upper: bool,
+	pub to_android: bool,
+	pub to_alpha: bool
 }
 impl<'a> Color<'a> {
-	// new one Color instance
-	pub fn new(mode: &'a str, is_upper: bool, is_android: bool, is_alpha: bool) -> Self {
+	// new one Color instance by all setting
+	pub fn new(mode: &'a str, to_upper: bool, to_android: bool, to_alpha: bool) -> Self {
 		Color {
-			to_mode: ColorMode::new(mode),
-			is_upper,
-			is_android,
-			is_alpha
+			mode: ColorMode::new(mode),
+			to_upper,
+			to_android,
+			to_alpha
+		}
+	}
+	// new one color instance by default config
+	pub fn init(mode: &'a str) -> Self {
+		Color {
+			mode: ColorMode::new(mode),
+			to_upper: false,
+			to_android: false,
+			to_alpha: false
 		}
 	}
 
-	// config Color config [is_upper, is_android, is_alpha]
-	pub fn upper(&mut self, is_upper: bool) -> &Self {
-		self.is_upper = is_upper;
+	// config Color config [to_upper, to_android, to_alpha]
+	pub fn upper(&mut self, to_upper: bool) -> &Self {
+		self.to_upper = to_upper;
 		self
 	}
-	pub fn android(&mut self, is_android: bool) -> &Self {
-		self.is_android = is_android;
+	pub fn android(&mut self, to_android: bool) -> &Self {
+		self.to_android = to_android;
 		self
 	}
-	pub fn alpha(&mut self, is_alpha: bool) -> &Self {
-		self.is_alpha = is_alpha;
+	pub fn alpha(&mut self, to_alpha: bool) -> &Self {
+		self.to_alpha = to_alpha;
 		self
 	}
 
 	pub fn to_rgb(&self) -> Result<String, &'static str> {
-		match self.to_mode {
+		match self.mode {
 			ColorMode::HEX(color) => hex::hex2rgb(color, self),
+			_ => Err("noting to match")
+		}
+	}
+
+	pub fn to_hex(&self) -> Result<String, &'static str> {
+		match self.mode {
+			ColorMode::HEX(color) => hex::hex2hex(color, self),
 			_ => Err("noting to match")
 		}
 	}

@@ -18,7 +18,7 @@ pub fn handle_hex_value<'a>(hex: &'a str, color: &Color) -> Result<Vec<&'a str>,
 		},
 		6 => return_vex.extend(&hex_vec),
 		8 => {
-			if color.is_android {
+			if color.to_android {
 				return_vex.extend(&hex_vec[2..]);
 				return_vex.extend(&hex_vec[0..2]);
 			} else {
@@ -41,7 +41,7 @@ pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
 		rgb_string.push(',');
 	}
 
-	if color.is_alpha {
+	if color.to_alpha {
 		rgb_string.insert_str(0, "rgba(");
 		if hex_vec.len() == 8 {
 			let data = map::map_hex(hex_vec[6]) * 16 + map::map_hex(hex_vec[7]);
@@ -55,9 +55,38 @@ pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
 		rgb_string.push_str(")");
 	}
 
-	if color.is_upper {
+	if color.to_upper {
 		Ok(rgb_string.to_uppercase())
 	} else {
 		Ok(rgb_string.to_lowercase())
+	}
+}
+
+pub fn hex2hex(hex: &str, color: &Color) -> Result<String, &'static str> {
+	let hex_vec = handle_hex_value(&hex, &color)?;
+	let mut hex_string = hex_vec.join("");
+
+	if color.to_alpha {
+		if hex_vec.len() != 8 {
+			if color.to_android {
+				hex_string.insert_str(0, "ff");
+			} else {
+				hex_string.push_str("FF");
+			}
+		} else {
+			if color.to_android {
+				//hex_string.insert_str(0, &hex_string.pop().unwrap().to_string());
+				hex_string = format!("{}{}", &hex_string[6..8], &hex_string[0..6]);
+			}
+		}
+	} else if hex_vec.len() == 8 {
+		hex_string = String::from(&hex_string[..6]);
+	}
+
+	hex_string.insert_str(0, "#");
+	if color.to_upper {
+		Ok(hex_string.to_uppercase())
+	} else {
+		Ok(hex_string.to_lowercase())
 	}
 }
