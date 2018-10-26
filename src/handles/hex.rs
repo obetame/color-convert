@@ -55,5 +55,9 @@ pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
 		rgb_string.push_str(")");
 	}
 
-	Ok(rgb_string)
+	if color.is_upper {
+		Ok(rgb_string.to_uppercase())
+	} else {
+		Ok(rgb_string.to_lowercase())
+	}
 }

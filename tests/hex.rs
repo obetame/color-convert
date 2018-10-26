@@ -32,16 +32,15 @@ mod tests {
 	fn test_hex2rgb() {
 		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
 		let hex_result = vec![
-			"rgb(128,255,255)", "rgb(255,255,255)", "rgba(255,255,255,0.50)",
-			"rgb(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)",
-			"rgb(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)",
-			"rgb(255,255,255)", "rgb(255,255,128)", "rgba(255,255,128,1.00)"
+			"RGB(128,255,255)", "rgb(255,255,255)", "rgba(128,255,255,1.00)",
+			"RGB(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)",
+			"RGB(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)",
+			"RGB(255,255,255)", "rgb(255,255,128)", "rgba(255,255,255,0.50)"
 		];
 
 		for (index, color) in hex_vec.iter().enumerate() {
-			let mut color = Color::new(color, false, false, false);
-
 			for i in 0..3 {
+				let mut color = Color::new(color, false, false, false);
 				match i {
 					0 => assert_eq!(color.upper(true).to_rgb().unwrap(), hex_result[index * 3]),
 					1 => assert_eq!(color.android(true).to_rgb().unwrap(), hex_result[index * 3 + 1]),
