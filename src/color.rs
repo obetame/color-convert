@@ -41,18 +41,29 @@ impl<'a> Color<'a> {
 		self.to_alpha = to_alpha;
 		self
 	}
+	pub fn to_str(&self) -> &str {
+		match self.mode {
+			ColorMode::HEX(color) => color,
+			ColorMode::RGB(color) => color,
+			ColorMode::RGBA(color) => color,
+			ColorMode::HSL(color) => color,
+			ColorMode::HSLA(color) => color,
+			ColorMode::HSV(color) => color,
+			ColorMode::CMYK(color) => color,
+		}
+	}
 
 	pub fn to_rgb(&self) -> Result<String, &'static str> {
 		match self.mode {
-			ColorMode::HEX(color) => hex::hex2rgb(color, self),
-			_ => Err("noting to match")
+			ColorMode::HEX(_) => hex::hex2rgb(self),
+			_ => Err("[color-convert] No matching color values")
 		}
 	}
 
 	pub fn to_hex(&self) -> Result<String, &'static str> {
 		match self.mode {
-			ColorMode::HEX(color) => hex::hex2hex(color, self),
-			_ => Err("noting to match")
+			ColorMode::HEX(_) => hex::hex2hex(self),
+			_ => Err("[color-convert] No matching color values")
 		}
 	}
 }

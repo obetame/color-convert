@@ -3,8 +3,8 @@ use handles::map;
 
 // hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 // return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
-pub fn handle_hex_value<'a>(hex: &'a str, color: &Color) -> Result<Vec<&'a str>, &'static str> {
-	let mut hex_vec: Vec<&'a str> = hex.split("").collect();
+pub fn handle_hex_value<'a>(color: &'a Color) -> Result<Vec<&'a str>, &'static str> {
+	let mut hex_vec: Vec<&'a str> = color.to_str().split("").collect();
 	hex_vec.retain(|&x| x != "" && x != "#");
 
 	let mut return_vex: Vec<&'a str> = vec![];
@@ -30,8 +30,8 @@ pub fn handle_hex_value<'a>(hex: &'a str, color: &Color) -> Result<Vec<&'a str>,
 	Ok(return_vex)
 }
 
-pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
-	let hex_vec = handle_hex_value(&hex, &color)?;
+pub fn hex2rgb(color: &Color) -> Result<String, &'static str> {
+	let hex_vec = handle_hex_value(&color)?;
 	let mut rgb_string = String::new();
 	let tool_array: [usize; 3] = [0, 2, 4];
 
@@ -62,8 +62,8 @@ pub fn hex2rgb(hex: &str, color: &Color) -> Result<String, &'static str> {
 	}
 }
 
-pub fn hex2hex(hex: &str, color: &Color) -> Result<String, &'static str> {
-	let hex_vec = handle_hex_value(&hex, &color)?;
+pub fn hex2hex(color: &Color) -> Result<String, &'static str> {
+	let hex_vec = handle_hex_value(&color)?;
 	let mut hex_string = hex_vec.join("");
 
 	if color.to_alpha {

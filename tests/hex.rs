@@ -9,18 +9,16 @@ mod tests {
 
 	#[test]
 	fn test_hex_handle() {
-		let hex = "#80ffffff";
-		let hex1 = "#c8c8c8";
-		let hex2 = "#ddd";
-
-		let setting = Color::new("rgb", false, true, false);
-		let setting1 = Color::new("rgb", false, false, false);
+		let setting = Color::new("#80ffffff", false, true, false);
+		let setting1 = Color::new("#c8c8c8", false, false, false);
+		let setting2 = Color::new("#ddd", false, false, false);
+		let setting4 = Color::new("#80ffffff", false, false, false);
 
 //		let hex_vec: Result<Vec<&str>, String> = hex::handle_hex_value(&hex, &setting);
-		let hex_vec = hex::handle_hex_value(&hex, &setting).unwrap();
-		let hex_vec1 = hex::handle_hex_value(&hex1, &setting).unwrap();
-		let hex_vec2 = hex::handle_hex_value(&hex2, &setting).unwrap();
-		let hex_vec3 = hex::handle_hex_value(&hex, &setting1).unwrap();
+		let hex_vec = hex::handle_hex_value( &setting).unwrap();
+		let hex_vec1 = hex::handle_hex_value( &setting1).unwrap();
+		let hex_vec2 = hex::handle_hex_value( &setting2).unwrap();
+		let hex_vec3 = hex::handle_hex_value(&setting4).unwrap();
 
 		assert_eq!(vec!["f", "f", "f", "f", "f", "f", "8", "0"], hex_vec);
 		assert_eq!(vec!["c", "8", "c", "8", "c", "8"], hex_vec1);

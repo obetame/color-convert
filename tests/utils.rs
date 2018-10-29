@@ -9,12 +9,10 @@ mod tests {
 
 	#[test]
 	fn test_utils_get_hex_alpha_value() {
-		let hex = "#80ffffff";
-		let hex1 = "#ffffff80";
-		let setting = Color::new("rgb", false, true, false);
-		let setting1 = Color::new("rgb", false, false, false);
-		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1).unwrap();
-		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting).unwrap();
+		let setting = Color::new("#80ffffff", false, true, false);
+		let setting1 = Color::new("#ffffff80", false, false, false);
+		let hex_vec: Vec<&str> = hex::handle_hex_value(&setting1).unwrap();
+		let hex_vec1: Vec<&str> = hex::handle_hex_value( &setting).unwrap();
 
 		let data = utils::get_hex_alpha_value(&hex_vec, &setting);
 		let data1 = utils::get_hex_alpha_value(&hex_vec1, &setting1);
