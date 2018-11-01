@@ -1,4 +1,6 @@
 use handles::hex;
+use std::fmt;
+use std::error::Error as StdError;
 
 // color define
 #[derive(Debug)]
@@ -53,17 +55,17 @@ impl<'a> Color<'a> {
 		}
 	}
 
-	pub fn to_rgb(&self) -> Result<String, &'static str> {
+	pub fn to_rgb(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2rgb(self),
-			_ => Err("[color-convert] No matching color values")
+			_ => Err(Error::NotMatch)
 		}
 	}
 
-	pub fn to_hex(&self) -> Result<String, &'static str> {
+	pub fn to_hex(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2hex(self),
-			_ => Err("[color-convert] No matching color values")
+			_ => Err(Error::NotMatch)
 		}
 	}
 }
@@ -113,6 +115,30 @@ impl<'a> PartialEq for ColorMode<'a> {
 			(ColorMode::HSV(i), ColorMode::HSV(j)) => i == j,
 			(ColorMode::HEX(i), ColorMode::HEX(j)) => i == j,
 			_ => false
+		}
+	}
+}
+
+#[derive(Debug)]
+pub enum Error {
+	Format,
+	NotMatch
+}
+
+impl fmt::Display for Error {
+	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+		match *self {
+			Error::Format => write!(f, "Format Error"),
+			Error::NotMatch => write!(f, "NotMatch Color")
+		}
+	}
+}
+
+impl StdError for Error {
+	fn description(&self) -> &str {
+		match *self {
+			Error::Format => "[color-convert] Color value is illegal.",
+			Error::NotMatch => "[color-convert] No match color value.",
 		}
 	}
 }

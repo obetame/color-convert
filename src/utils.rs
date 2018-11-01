@@ -6,11 +6,11 @@ use handles::map;
 // Get hex's transparency value and convert to decimal
 // ['8','0','f','f','f','f','f','f'] to_android = true -> 0.5
 // ['f','f','f','f','f','f','8','0'] to_android = false -> 0.5
-pub fn get_hex_alpha_value(color: &Vec<&str>, setting: &Color) -> f32 {
-	let value: &[&str] = if setting.to_android {
-		&color[..2]
+pub fn get_hex_alpha_value(hex_vec: &Vec<&str>, color: &Color) -> f32 {
+	let value: &[&str] = if color.to_android {
+		&hex_vec[..2]
 	} else {
-		&color[&color.len() - 2..]
+		&hex_vec[&hex_vec.len() - 2..]
 	};
 
 	let a: usize = map::map_hex(&*value[1].to_uppercase());

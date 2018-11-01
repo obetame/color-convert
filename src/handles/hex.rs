@@ -1,9 +1,9 @@
-use color::Color;
+use color::{Color, Error};
 use handles::map;
 
 // hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 // return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
-pub fn handle_hex_value<'a>(color: &'a Color) -> Result<Vec<&'a str>, &'static str> {
+pub fn handle_hex_value<'a>(color: &'a Color) -> Result<Vec<&'a str>, Error> {
 	let mut hex_vec: Vec<&'a str> = color.to_str().split("").collect();
 	hex_vec.retain(|&x| x != "" && x != "#");
 
@@ -25,12 +25,12 @@ pub fn handle_hex_value<'a>(color: &'a Color) -> Result<Vec<&'a str>, &'static s
 				return_vex.extend(&hex_vec);
 			}
 		},
-		_ => return Err("[color-convert] hex value length must one of in [3, 6, 8]")
+		_ => return Err(Error::Format) // "[color-convert] hex value length must one of in [3, 6, 8]"
 	}
 	Ok(return_vex)
 }
 
-pub fn hex2rgb(color: &Color) -> Result<String, &'static str> {
+pub fn hex2rgb(color: &Color) -> Result<String, Error> {
 	let hex_vec = handle_hex_value(&color)?;
 	let mut rgb_string = String::new();
 	let tool_array: [usize; 3] = [0, 2, 4];
@@ -62,7 +62,7 @@ pub fn hex2rgb(color: &Color) -> Result<String, &'static str> {
 	}
 }
 
-pub fn hex2hex(color: &Color) -> Result<String, &'static str> {
+pub fn hex2hex(color: &Color) -> Result<String, Error> {
 	let hex_vec = handle_hex_value(&color)?;
 	let mut hex_string = hex_vec.join("");
 
