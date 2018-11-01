@@ -21,7 +21,7 @@ mod tests {
 
 	#[test]
 	fn test_rgb_tohsl() {
-		let color = Color::init("rgb(81%,89%,12%,1)");
+		let color = Color::init("rgb(81%,89%)");
 		let rgb_vec = rgb::to_hsl(&color);
 		println!("{:?}", rgb_vec);
 	}

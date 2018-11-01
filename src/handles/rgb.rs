@@ -11,6 +11,7 @@ pub fn handle_rgb<'a>(color: &'a Color) -> Result<Captures<'a>, String> {
 	if let Some(value) = cap {
 		Ok(value)
 	} else {
+		println!("{:?}", cap);
 		Err(format!("[color-convert] noting to match: {}", color.to_str()))
 	}
 }

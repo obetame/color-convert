@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c12e232-deb7-490d-8ed1-338cdc912c3f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/error.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handles/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/rgb.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rgb.rs" afterDir="false" />
@@ -52,8 +53,8 @@
       <file leaf-file-name="hex.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1889">
-              <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="13" />
+            <state relative-caret-position="2015">
+              <caret line="65" column="13" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -67,11 +68,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rgb.rs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rgb.rs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/handles/rgb.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+            <state relative-caret-position="403">
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error.rs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/error.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -80,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/tests/rgb.rs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="713">
-              <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+              <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -140,8 +150,9 @@
         <option value="$PROJECT_DIR$/tests/utils.rs" />
         <option value="$PROJECT_DIR$/tests/hex.rs" />
         <option value="$PROJECT_DIR$/src/color.rs" />
-        <option value="$PROJECT_DIR$/tests/rgb.rs" />
         <option value="$PROJECT_DIR$/src/handles/rgb.rs" />
+        <option value="$PROJECT_DIR$/tests/rgb.rs" />
+        <option value="$PROJECT_DIR$/src/error.rs" />
       </list>
     </option>
   </component>
@@ -166,18 +177,19 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="2560" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,12 +201,6 @@
               <item name="color-convert" type="b2602c69:ProjectViewProjectNode" />
               <item name="color-convert" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="color-convert" type="b2602c69:ProjectViewProjectNode" />
-              <item name="color-convert" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="handles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="color-convert" type="b2602c69:ProjectViewProjectNode" />
@@ -232,113 +238,89 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.Test tests::test_rgb_tohsl">
+  <component name="RunManager" selected="Cargo Command.all-test">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Test handles::tests" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test handles tests" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration name="Test tests::test_hex2hex" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test hex tests::test_hex2hex -- --exact" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration name="Test tests::test_hex2rgb" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test hex tests::test_hex2rgb -- --exact" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration name="Test tests::test_rgb_handle" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test rgb tests::test_rgb_handle -- --exact" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration name="Test tests::test_rgb_tohsl" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test rgb tests::test_rgb_tohsl -- --exact" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration name="all-test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test -- --nocapture --test-threads 4" />
-      <option name="nocapture" value="true" />
+      <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <envs />
+      <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list>
       <item itemvalue="Cargo Command.all-test" />
       <item itemvalue="Cargo Command.Test handles::tests" />
-      <item itemvalue="Cargo Command.Test tests::test_hex2rgb" />
       <item itemvalue="Cargo Command.Test tests::test_hex2hex" />
+      <item itemvalue="Cargo Command.Test tests::test_hex2rgb" />
       <item itemvalue="Cargo Command.Test tests::test_rgb_handle" />
       <item itemvalue="Cargo Command.Test tests::test_rgb_tohsl" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Cargo Command.Test tests::test_rgb_tohsl" />
-        <item itemvalue="Cargo Command.Test tests::test_rgb_handle" />
-        <item itemvalue="Cargo Command.Test tests::test_hex2rgb" />
-        <item itemvalue="Cargo Command.Test tests::test_hex2hex" />
-        <item itemvalue="Cargo Command.Test handles::tests" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -375,12 +357,13 @@
       <workItem from="1540608107573" duration="3106000" />
       <workItem from="1540710774571" duration="3420000" />
       <workItem from="1540715090448" duration="6038000" />
-      <workItem from="1540777363336" duration="4340000" />
+      <workItem from="1540777363336" duration="6486000" />
+      <workItem from="1541035456110" duration="322000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71676000" />
+    <option name="totallyTimeSpent" value="74144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="6" />
@@ -396,11 +379,11 @@
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32974482" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info active="true" anchor="right" x="324" y="183" width="1176" height="787" id="Run" order="11" visible="true" weight="0.2799043" />
+      <window_info anchor="right" x="324" y="183" width="1176" height="787" id="Run" order="11" weight="0.2799043" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3299532" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15510367" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15669857" />
       <window_info anchor="right" id="Database" order="9" type="WINDOWED" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -429,13 +412,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lib.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1316">
@@ -715,22 +691,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1889">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="13" />
+        <state relative-caret-position="2015">
+          <caret line="65" column="13" selection-start-line="65" selection-start-column="6" selection-end-line="65" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/rgb.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="713">
-          <caret line="23" column="48" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <caret line="23" column="40" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/handles/rgb.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        <state relative-caret-position="403">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/error.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
