@@ -1,17 +1,15 @@
 // use std::ascii::AsciiExt;
 //use config::ColorMode;
-use color::Color;
+use color::{Color, Error};
 use handles::map;
+use handles::hex;
 
 // Get hex's transparency value and convert to decimal
 // ['8','0','f','f','f','f','f','f'] to_android = true -> 0.5
 // ['f','f','f','f','f','f','8','0'] to_android = false -> 0.5
-pub fn get_hex_alpha_value(hex_vec: &Vec<&str>, color: &Color) -> f32 {
-	let value: &[&str] = if color.to_android {
-		&hex_vec[..2]
-	} else {
-		&hex_vec[&hex_vec.len() - 2..]
-	};
+pub fn get_hex_alpha_value(color: &Color) -> f32 {
+	let hex_vec = hex::handle_hex_value( &color).unwrap();
+	let value: &[&str] = &hex_vec[&hex_vec.len() - 2..];
 
 	let a: usize = map::map_hex(&*value[1].to_uppercase());
 	let b: usize = map::map_hex(&*value[0].to_uppercase());
@@ -21,7 +19,7 @@ pub fn get_hex_alpha_value(hex_vec: &Vec<&str>, color: &Color) -> f32 {
 
 // Get rgba transparency value and convert to hexadecimal
 // "rgba(1,1,1,.5)" -> 0.5
-pub fn get_rgba_alpha_value(color: &str) -> Result<f32, String> {
+pub fn get_rgba_alpha_value(color: &str) -> Result<f32, Error> {
 	let vec_value: Vec<&str> = color.split(',').collect();
 
 	let result = match vec_value.len() {
@@ -30,10 +28,10 @@ pub fn get_rgba_alpha_value(color: &str) -> Result<f32, String> {
 			let alpha: String = vec_value[3].replace(")", "");
 			match alpha.parse::<f32>() {
 				Ok(value) => value,
-				Err(_error) => return Err(String::from("alpha value is not a number, unable to convert to f32")),
+				Err(_error) => return Err(Error::RgbAlphaFormat),
 			}
 		},
-		_ => return Err(String::from("{} value is not formatted correctly."))
+		_ => return Err(Error::RgbAlphaFormat)
 	};
 
 	Ok(result)
@@ -52,4 +50,16 @@ pub fn handel_alpha_to_hexadecimal(alpha: f32) -> String {
 
 	// let value: &'a str = &*format!("{}{}", map::map_rgb(a), map::map_rgb(b));
 	map::map_rgb(&a).to_owned() + map::map_rgb(&b)
+}
+
+// convert value_string to number
+// "50%" -> 0.5; "0.5" -> 0.5; ".5" -> 0.5, "244" -> 244.0
+pub fn convert_value_to_number(value: &str) ->f32 {
+	let n = value.replace("%", "");
+	let result = match n.parse::<f32>() {
+		Ok(value) => value,
+		Err(_error) => 0f32,
+	};
+
+	result
 }

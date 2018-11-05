@@ -122,14 +122,16 @@ impl<'a> PartialEq for ColorMode<'a> {
 #[derive(Debug)]
 pub enum Error {
 	Format,
-	NotMatch
+	NotMatch,
+	RgbAlphaFormat
 }
 
 impl fmt::Display for Error {
 	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 		match *self {
 			Error::Format => write!(f, "Format Error"),
-			Error::NotMatch => write!(f, "NotMatch Color")
+			Error::NotMatch => write!(f, "NotMatch Color"),
+			Error::RgbAlphaFormat => write!(f, "Rgba Alpha Format Error")
 		}
 	}
 }
@@ -139,6 +141,7 @@ impl StdError for Error {
 		match *self {
 			Error::Format => "[color-convert] Color value is illegal.",
 			Error::NotMatch => "[color-convert] No match color value.",
+			Error::RgbAlphaFormat => "alpha value is not a number, unable to convert to f32"
 		}
 	}
 }

@@ -9,15 +9,13 @@ mod tests {
 
 	#[test]
 	fn test_utils_get_hex_alpha_value() {
-		let setting = Color::new("#80ffffff", false, true, false);
-		let setting1 = Color::new("#ffffff80", false, false, false);
-		let hex_vec: Vec<&str> = hex::handle_hex_value(&setting1).unwrap();
-		let hex_vec1: Vec<&str> = hex::handle_hex_value( &setting).unwrap();
+		let color = Color::new("#80ffffff", false, true, false);
+		let color1 = Color::new("#ffffff80", false, false, false);
 
-		let data = utils::get_hex_alpha_value(&hex_vec, &setting);
-		let data1 = utils::get_hex_alpha_value(&hex_vec1, &setting1);
+		let data = utils::get_hex_alpha_value(&color);
+		let data1 = utils::get_hex_alpha_value(&color1);
 
-		assert_eq!(1f32, data);
+		assert_eq!(0.502f32, data);
 		assert_eq!(0.502f32, data1);
 	}
 
