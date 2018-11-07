@@ -90,3 +90,10 @@ pub fn hex2hex(color: &Color) -> Result<String, Error> {
 		Ok(hex_string.to_lowercase())
 	}
 }
+
+pub fn hex2hsl(color: &Color) -> Result<String, Error> {
+	let rgb_string = hex2rgb(&color)?;
+	let color_rgb = color.copy(&rgb_string);
+
+	Ok(color_rgb.to_hsl()?)
+}

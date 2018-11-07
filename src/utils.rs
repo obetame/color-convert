@@ -55,11 +55,46 @@ pub fn handel_alpha_to_hexadecimal(alpha: f32) -> String {
 // convert value_string to number
 // "50%" -> 0.5; "0.5" -> 0.5; ".5" -> 0.5, "244" -> 244.0
 pub fn convert_value_to_number(value: &str) ->f32 {
-	let n = value.replace("%", "");
-	let result = match n.parse::<f32>() {
-		Ok(value) => value,
-		Err(_error) => 0f32,
-	};
+	let result;
+	if value.contains("%") {
+		let n = value.replace("%", "");
+		result = match n.parse::<f32>() {
+			Ok(value) => value / 100f32,
+			Err(_error) => 0f32,
+		};
+	} else {
+		result = match value.parse::<f32>() {
+			Ok(value) => value / 255f32,
+			Err(_error) => 0f32,
+		};
+	}
 
 	result
+}
+
+// convert f32 value to include % value
+// 0.3 -> "30%"; 1 -> "100%"; 0.452444 -> "45.24%"; 0.000 -> "0"; 101.34 -> "101.34"
+pub fn convert_f32_to_percent(v: f32) -> String {
+	if v == 0f32 {
+		String::from("0")
+	} else if v > 100f32 {
+		format!("{:.2}", v)
+	} else {
+		let value = v * 100f32;
+		let mut s = value.to_string();
+
+		s.truncate(5);
+		s.push('%');
+		s
+	}
+}
+
+// convert 0f32 to "0"
+// 0.000 -> "0"; 2.535 -> "2.535"
+pub fn convert_f32_to_string(v: f32) -> String {
+	if v == 0f32 {
+		String::from("0")
+	} else {
+		format!("{:.2}", v)
+	}
 }

@@ -3,32 +3,13 @@ extern crate color_convert;
 #[cfg(test)]
 mod tests {
 	use color_convert::color::{Color};
-	//	use color_convert::handles::map;
-	use color_convert::handles::rgb;
-//	use color_convert::utils;
-
-//	#[test]
-//	fn test_rgb_handle() {
-//		let color = Color::init("rgba");
-//		let cap = rgb::handle_rgb(&color);
-//
-//		if let Captures(value) = cap {
-//			println!("{:?}", value);
-//		} else {
-//			println!("noting");
-//		}
-//	}
 
 	#[test]
 	fn test_rgb_tohsl() {
-		let color = Color::init("rgb( 81% , 89% , 10%)");
-		let _color1 = Color::init("rgb(81%,89%,10%,0.5)");
-		let rgb_vec = rgb::to_hsl(&color);
+		let color = Color::init("rgb( 81 , 89% , 10%)");
+		let color1 = Color::new("rgb(81%,89%,10%,0.5)", false, false, true);
 
-		if let Err(error) = rgb_vec {
-			println!("error: {}", error);
-		} else {
-			println!("ok: {:?}", rgb_vec);
-		}
+		assert_eq!("hsl(103.47,79.79%,49.5%)", color.to_hsl().unwrap());
+		assert_eq!("hsla(66.08,79.79%,49.5%,0.5)", color1.to_hsl().unwrap());
 	}
 }

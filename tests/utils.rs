@@ -4,7 +4,6 @@ extern crate color_convert;
 mod tests {
 	use color_convert::utils;
 	use color_convert::color::Color;
-	use color_convert::handles::hex;
 	use std::panic;
 
 	#[test]

@@ -1,4 +1,4 @@
-use handles::hex;
+use handles::{hex, rgb};
 use std::fmt;
 use std::error::Error as StdError;
 
@@ -27,6 +27,15 @@ impl<'a> Color<'a> {
 			to_upper: false,
 			to_android: false,
 			to_alpha: false
+		}
+	}
+	// init new color from copy other colorValue
+	pub fn copy(&self, mode: &'a str) -> Self {
+		Color {
+			mode: ColorMode::new(mode),
+			to_upper: self.to_upper,
+			to_android: self.to_android,
+			to_alpha: self.to_alpha
 		}
 	}
 
@@ -65,6 +74,15 @@ impl<'a> Color<'a> {
 	pub fn to_hex(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2hex(self),
+			_ => Err(Error::NotMatch)
+		}
+	}
+
+	pub fn to_hsl(&self) -> Result<String, Error> {
+		match self.mode {
+			ColorMode::HEX(_) => hex::hex2hsl(self),
+			ColorMode::RGB(_) => rgb::rgb2hsl(self),
+			ColorMode::RGBA(_) => rgb::rgb2hsl(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
