@@ -76,6 +76,6 @@ mod tests {
 	fn test_hex2hsl() {
 		let hex = Color::init("#FDFFD3");
 
-		assert_eq!("hsl(62.73,100%,91.37%)", hex.to_hsl().unwrap());
+		assert_eq!("hsl(62.73,100%,91.37%)", hex.to_hsl().expect("error"));
 	}
 }
