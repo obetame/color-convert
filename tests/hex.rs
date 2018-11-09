@@ -94,4 +94,33 @@ mod tests {
 			}
 		}
 	}
+
+	#[test]
+	fn test_hex2cmykl() {
+		let rgb_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let rgb_result = vec![
+			"CMYK(0.5,0,0,0)", "cmyk(0,0,0,0)", "cmyk(0.5,0,0,0)",
+			"CMYK(0,0,0,0.22)", "cmyk(0,0,0,0.22)", "cmyk(0.22,0.22,0.22,0)",
+			"CMYK(0,0,0,0.13)", "cmyk(0,0,0,0.13)", "cmyk(0.13,0.13,0.13,0)",
+			"CMYK(0,0,0,0)", "cmyk(0,0,0.5,0)", "cmyk(0,0,0,0)",
+		];
+
+		for (index, color) in rgb_vec.iter().enumerate() {
+			for i in 0..3 {
+				let mut color = Color::new(color, false, false, false);
+				match i {
+					0 => assert_eq!(color.upper(true).to_cmyk().unwrap(), rgb_result[index * 3]),
+					1 => assert_eq!(color.android(true).to_cmyk().unwrap(), rgb_result[index * 3 + 1]),
+					2 => assert_eq!(color.alpha(true).to_cmyk().unwrap(), rgb_result[index * 3 + 2]),
+					_ => println!("noting")
+				}
+//				match i {
+//					0 => println!("{}", color.upper(true).to_cmyk().unwrap()),
+//					1 => println!("{}", color.android(true).to_cmyk().unwrap()),
+//					2 => println!("{}", color.alpha(true).to_cmyk().unwrap()),
+//					_ => println!("noting")
+//				}
+			}
+		}
+	}
 }

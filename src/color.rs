@@ -86,6 +86,15 @@ impl<'a> Color<'a> {
 			_ => Err(Error::NotMatch)
 		}
 	}
+
+	pub fn to_cmyk(&self) -> Result<String, Error> {
+		match self.mode {
+			ColorMode::HEX(_) => hex::hex2cmyk(self),
+			ColorMode::RGB(_) => rgb::rgb2cmyk(self),
+			ColorMode::RGBA(_) => rgb::rgb2cmyk(self),
+			_ => Err(Error::NotMatch)
+		}
+	}
 }
 
 #[derive(Debug)]

@@ -82,3 +82,40 @@ pub fn rgb2hsl(color: &Color) -> Result<String, Error> {
 	}
 	Ok(hsl)
 }
+
+// rgb -> rgb(81,89,12), rgba(81,89,12,1)
+// return -> cmyk(0.09,0,0.865,0.651)
+// https://www.rapidtables.com/convert/color/rgb-to-cmyk.html
+pub fn rgb2cmyk(color: &Color) -> Result<String, Error> {
+	let cap: Vec<f32> = handle_rgb(&color)?;
+	let r = cap[0];
+	let g = cap[1];
+	let b = cap[2];
+	let max = *cap.iter().max_by(|x, y| x.partial_cmp(y).unwrap()).unwrap();
+
+	let k = ((1f32 - max) * 100f32).round() / 100f32;
+	if k == 1f32 {
+		if color.to_upper {
+			return Ok(String::from("CMYK(0,0,0,1)"));
+		} else {
+			return Ok(String::from("cmyk(0,0,0,1)"));
+		}
+	}
+
+	let c = ((1f32 - r - k) / (1f32 - k) * 100f32).round() / 100f32;
+	let m = ((1f32 - g - k) / (1f32 - k) * 100f32).round() / 100f32;
+	let y = ((1f32 - b - k) / (1f32 - k) * 100f32).round() / 100f32;
+
+	let mut cmyk = vec![c, m, y, k];
+	for index in 0..4 {
+		if cmyk[index] < 0f32 {
+			cmyk[index] = 0f32;
+		}
+	}
+
+	if color.to_upper {
+		Ok(format!("CMYK({},{},{},{})", cmyk[0], cmyk[1], cmyk[2], cmyk[3]))
+	} else {
+		Ok(format!("cmyk({},{},{},{})", cmyk[0], cmyk[1], cmyk[2], cmyk[3]))
+	}
+}

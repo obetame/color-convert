@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c12e232-deb7-490d-8ed1-338cdc912c3f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/color.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/color.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handles/hex.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/hex.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handles/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/rgb.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/hex.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/hex.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rgb.rs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,24 +43,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="rs" value="2966" />
+          <entry key="rs" value="3777" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Rust" value="2966" />
+          <entry key="Rust" value="3777" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="rs" value="17" />
+          <entry key="rs" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Rust" value="17" />
+          <entry key="Rust" value="18" />
         </counts>
       </usages-collector>
     </session>
@@ -65,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/color.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-242">
-              <caret line="83" column="36" lean-forward="true" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
+            <state relative-caret-position="401">
+              <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
               <folding>
                 <element signature="n#!!block;n#ColorMode#0" />
               </folding>
@@ -74,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/hex.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+            <state relative-caret-position="547">
+              <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -86,17 +91,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/handles/rgb.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="866">
-              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+            <state relative-caret-position="955">
+              <caret line="116" column="34" lean-forward="true" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+              <folding>
+                <element signature="n#!!block;n#handle_rgb#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/rgb.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+            <state relative-caret-position="930">
+              <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1141">
+              <caret line="104" column="24" selection-start-line="104" selection-start-column="24" selection-end-line="104" selection-end-column="24" />
+              <folding>
+                <element signature="n#!!block;n#hex2hex#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,6 +162,7 @@
       <find>is_upper</find>
       <find>is_android</find>
       <find>is_alpha</find>
+      <find>enumerate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,13 +183,13 @@
         <option value="$PROJECT_DIR$/src/error.rs" />
         <option value="$PROJECT_DIR$/src/lib.rs" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/color.rs" />
         <option value="$PROJECT_DIR$/src/utils.rs" />
         <option value="$PROJECT_DIR$/tests/utils.rs" />
         <option value="$PROJECT_DIR$/src/handles/hex.rs" />
-        <option value="$PROJECT_DIR$/tests/hex.rs" />
+        <option value="$PROJECT_DIR$/src/color.rs" />
         <option value="$PROJECT_DIR$/src/handles/rgb.rs" />
         <option value="$PROJECT_DIR$/tests/rgb.rs" />
+        <option value="$PROJECT_DIR$/tests/hex.rs" />
       </list>
     </option>
   </component>
@@ -234,7 +255,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541739655585" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541741703115" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -257,16 +278,34 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.Test tests::test_rgb_tohsl">
+  <component name="RunManager" selected="Cargo Command.Test tests::test_hex2cmykl">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test tests::test_hex2cmykl" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package color-convert --test hex tests::test_hex2cmykl -- --exact --nocapture" />
+      <option name="allFeatures" value="true" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="Test tests::test_hex2hsl" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="test --package color-convert --test hex tests::test_hex2hsl -- --exact --nocapture" />
+      <option name="allFeatures" value="true" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test tests::test_rgb_tocmykl" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="test --package color-convert --test rgb tests::test_rgb_tocmykl -- --exact --nocapture" />
       <option name="allFeatures" value="true" />
       <option name="backtrace" value="SHORT" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
@@ -321,9 +360,13 @@
       <item itemvalue="Cargo Command.Test tests::test_rgb_tohsl" />
       <item itemvalue="Cargo Command.Test tests::test_utils_get_hex_alpha_value" />
       <item itemvalue="Cargo Command.Test tests::test_hex2hsl" />
+      <item itemvalue="Cargo Command.Test tests::test_rgb_tocmykl" />
+      <item itemvalue="Cargo Command.Test tests::test_hex2cmykl" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Test tests::test_hex2cmykl" />
+        <item itemvalue="Cargo Command.Test tests::test_rgb_tocmykl" />
         <item itemvalue="Cargo Command.Test tests::test_rgb_tohsl" />
         <item itemvalue="Cargo Command.Test tests::test_hex2hsl" />
         <item itemvalue="Cargo Command.Test tests::test_utils_get_hex_alpha_value" />
@@ -369,44 +412,44 @@
       <workItem from="1541035456110" duration="322000" />
       <workItem from="1541081479183" duration="13164000" />
       <workItem from="1541382871416" duration="14521000" />
-      <workItem from="1541642211874" duration="2318000" />
+      <workItem from="1541642211874" duration="4304000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 09h 53m 27s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_rgb_tocmykl - 2018.11.09 at 13h 28m 45s.xml">
+      <configuration name="Test tests::test_rgb_tocmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 16m 28s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_rgb_tocmykl - 2018.11.09 at 13h 30m 07s.xml">
+      <configuration name="Test tests::test_rgb_tocmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 16m 42s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_rgb_tocmykl - 2018.11.09 at 13h 30m 27s.xml">
+      <configuration name="Test tests::test_rgb_tocmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 21m 00s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_rgb_tocmykl - 2018.11.09 at 13h 30m 30s.xml">
+      <configuration name="Test tests::test_rgb_tocmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 21m 35s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 32m 13s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 21m 53s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 32m 22s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 22m 57s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 33m 22s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_hex2hsl - 2018.11.09 at 10h 23m 04s.xml">
-      <configuration name="Test tests::test_hex2hsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 33m 36s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_rgb_tohsl - 2018.11.09 at 12h 59m 31s.xml">
-      <configuration name="Test tests::test_rgb_tohsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 34m 50s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
-    <history-entry file="Test_tests__test_rgb_tohsl - 2018.11.09 at 13h 00m 58s.xml">
-      <configuration name="Test tests::test_rgb_tohsl" configurationId="CargoCommandRunConfiguration" />
+    <history-entry file="Test_tests__test_hex2cmykl - 2018.11.09 at 13h 35m 06s.xml">
+      <configuration name="Test tests::test_hex2cmykl" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104147000" />
+    <option name="totallyTimeSpent" value="106133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="6" />
@@ -546,26 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1045">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="n#!!block;n#hex2hex#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/color.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="83" column="36" lean-forward="true" selection-start-line="83" selection-start-column="36" selection-end-line="83" selection-end-column="36" />
-          <folding>
-            <element signature="n#!!block;n#ColorMode#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/utils.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
@@ -583,24 +606,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/handles/rgb.rs">
+    <entry file="file://$PROJECT_DIR$/src/handles/hex.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="1141">
+          <caret line="104" column="24" selection-start-line="104" selection-start-column="24" selection-end-line="104" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#hex2hex#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/hex.rs">
+    <entry file="file://$PROJECT_DIR$/src/color.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="74" column="9" lean-forward="true" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+        <state relative-caret-position="401">
+          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#ColorMode#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/handles/rgb.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="955">
+          <caret line="116" column="34" lean-forward="true" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!block;n#handle_rgb#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/rgb.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+        <state relative-caret-position="930">
+          <caret line="30" column="23" lean-forward="true" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/hex.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="107" column="54" selection-start-line="107" selection-start-column="54" selection-end-line="107" selection-end-column="54" />
         </state>
       </provider>
     </entry>
