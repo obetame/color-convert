@@ -3,10 +3,10 @@ use regex::Regex;
 use color::{Color, Error};
 use utils;
 
-// rgb -- rgba(81%,89%,12%,1),rgb(81,89,12),rgba(81%,89%,12%,0.3) etc..
-// return -- [0.81,0.89,0.12,1],[0.81,0.89,0.12] [0.81,0.89,0.12,0.3] etc...
+// rgb -> rgba(81%,89%,12%,1),rgb(81,89,12),rgba(81%,89%,12%,0.3) etc..
+// return -> [0.81,0.89,0.12,1],[0.81,0.89,0.12] [0.81,0.89,0.12,0.3] etc...
 pub fn handle_rgb(color: &Color) -> Result<Vec<f32>, Error> {
-	let re = Regex::new(r"rgba?\(\s*(?P<r>\d{1,3}\.?\d*%?)\s*,\s*(?P<g>\d{1,3}\.?\d*%?)\s*,\s*(?P<b>\d{1,3}\.?\d*%?)\s*,?\s*(?P<alpha>\.?\d{1,3}\.?\d*%?)?\s*\)").unwrap();
+	let re = Regex::new(r"(?i)rgba?\(\s*(?P<r>\d{1,3}\.?\d*%?)\s*,\s*(?P<g>\d{1,3}\.?\d*%?)\s*,\s*(?P<b>\d{1,3}\.?\d*%?)\s*,?\s*(?P<alpha>\.?\d{1,3}\.?\d*%?)?\s*\)").unwrap();
 	let cap = re.captures(color.to_str());
 
 	if let Some(value) = cap {
@@ -27,6 +27,8 @@ pub fn handle_rgb(color: &Color) -> Result<Vec<f32>, Error> {
 	Err(Error::Format)
 }
 
+// rgb -> rgb( 81 , 89% , 10%), rgba(81%,89%,10%,0.5)
+// return -> hsl(103.47,79.79%,49.5%), hsla(66.08,79.79%,49.5%,0.5)
 pub fn rgb2hsl(color: &Color) -> Result<String, Error> {
 	let cap: Vec<f32> = handle_rgb(&color)?;
 	let rgb = &cap.clone()[0..3];
@@ -75,5 +77,8 @@ pub fn rgb2hsl(color: &Color) -> Result<String, Error> {
 		hsl.insert_str(0, "hsl");
 	}
 
+	if color.to_upper {
+		hsl = hsl.to_uppercase()
+	}
 	Ok(hsl)
 }
