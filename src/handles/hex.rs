@@ -104,3 +104,10 @@ pub fn hex2cmyk(color: &Color) -> Result<String, Error> {
 
 	Ok(color_rgb.to_cmyk()?)
 }
+
+pub fn hex2hsv(color: &Color) -> Result<String, Error> {
+	let rgb_string = hex2rgb(&color)?;
+	let color_rgb = color.copy(&rgb_string);
+
+	Ok(color_rgb.to_hsv()?)
+}

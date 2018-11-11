@@ -74,6 +74,8 @@ impl<'a> Color<'a> {
 	pub fn to_hex(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2hex(self),
+			ColorMode::RGB(_) => rgb::rgb2hex(self),
+			ColorMode::RGBA(_) => rgb::rgb2hex(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -92,6 +94,15 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2cmyk(self),
 			ColorMode::RGB(_) => rgb::rgb2cmyk(self),
 			ColorMode::RGBA(_) => rgb::rgb2cmyk(self),
+			_ => Err(Error::NotMatch)
+		}
+	}
+
+	pub fn to_hsv(&self) -> Result<String, Error> {
+		match self.mode {
+			ColorMode::HEX(_) => hex::hex2hsl(self),
+			ColorMode::RGB(_) => rgb::rgb2hsv(self),
+			ColorMode::RGBA(_) => rgb::rgb2hsv(self),
 			_ => Err(Error::NotMatch)
 		}
 	}

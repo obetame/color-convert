@@ -123,4 +123,34 @@ mod tests {
 			}
 		}
 	}
+
+	#[test]
+	fn test_hex2hsv() {
+		let rgb_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let rgb_result = vec![
+			"HSL(180.00,100%,75.09%)", "hsl(0,0,100%)", "hsla(180.00,100%,75.09%,1)",
+			"HSL(0,0,78.43%)", "hsl(0,0,78.43%)", "hsla(0,0,78.43%,1)",
+			"HSL(0,0,86.66%)", "hsl(0,0,86.66%)", "hsla(0,0,86.66%,1)",
+			"HSL(0,0,100%)", "hsl(60.00,100%,75.09%)", "hsla(0,0,100%,0.5)",
+		];
+
+		for (index, color) in rgb_vec.iter().enumerate() {
+//			println!("{:?}", color);
+			for i in 0..3 {
+				let mut color = Color::new(color, false, false, false);
+				match i {
+					0 => assert_eq!(color.upper(true).to_hsv().unwrap(), rgb_result[index * 3]),
+					1 => assert_eq!(color.android(true).to_hsv().unwrap(), rgb_result[index * 3 + 1]),
+					2 => assert_eq!(color.alpha(true).to_hsv().unwrap(), rgb_result[index * 3 + 2]),
+					_ => println!("noting")
+				}
+//				match i {
+//					0 => println!("{}", color.upper(true).to_hsv().unwrap()),
+//					1 => println!("{}", color.android(true).to_hsv().unwrap()),
+//					2 => println!("{}", color.alpha(true).to_hsv().unwrap()),
+//					_ => println!("noting")
+//				}
+			}
+		}
+	}
 }

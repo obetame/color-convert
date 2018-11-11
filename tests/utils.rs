@@ -50,4 +50,10 @@ mod tests {
 
 		assert_eq!(hex_alpha, String::from("80"));
 	}
+
+	#[test]
+	fn test_round() {
+		assert_eq!(0.45f32, utils::round(0.4534f32, 2));
+		assert_eq!(0.4534f32, utils::round(0.4534f32, 4));
+	}
 }

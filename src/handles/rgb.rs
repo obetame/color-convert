@@ -1,30 +1,75 @@
 use regex::Regex;
 //use regex::Captures;
 use color::{Color, Error};
+use handles::map;
 use utils;
 
 // rgb -> rgba(81%,89%,12%,1),rgb(81,89,12),rgba(81%,89%,12%,0.3) etc..
-// return -> [0.81,0.89,0.12,1],[0.81,0.89,0.12] [0.81,0.89,0.12,0.3] etc...
+// return -> [0.81,0.89,0.12,1],[0.81,0.89,0.12],[0.81,0.89,0.12,0.3] etc...
 pub fn handle_rgb(color: &Color) -> Result<Vec<f32>, Error> {
-	let re = Regex::new(r"(?i)rgba?\(\s*(?P<r>\d{1,3}\.?\d*%?)\s*,\s*(?P<g>\d{1,3}\.?\d*%?)\s*,\s*(?P<b>\d{1,3}\.?\d*%?)\s*,?\s*(?P<alpha>\.?\d{1,3}\.?\d*%?)?\s*\)").unwrap();
+	let re = Regex::new(r"(?i)rgba?\(\s*(?P<r>\d{1,3}\.?\d*%?)\s*,\s*(?P<g>\d{1,3}\.?\d*%?)\s*,\s*(?P<b>\d{1,3}\.?\d*%?)\s*,?\s*(?P<alpha>\.?\d{1,3}\.?\d*%?)?\s*\)").expect("Parse rgb value error");
 	let cap = re.captures(color.to_str());
 
 	if let Some(value) = cap {
-		let r = utils::convert_value_to_number(&value["r"]);
-		let g = utils::convert_value_to_number(&value["g"]);
-		let b = utils::convert_value_to_number(&value["b"]);
+		let r = utils::convert_rgb_value_to_number(&value["r"]);
+		let g = utils::convert_rgb_value_to_number(&value["g"]);
+		let b = utils::convert_rgb_value_to_number(&value["b"]);
 
 		let match_alpha = value.get(4);
 		if let Some(value) = match_alpha {
-			let a = value.as_str().parse::<f32>().unwrap();
+			let a = utils::convert_alpha_value_to_number(value.as_str());
+//			let a = value.as_str().parse::<f32>().unwrap();
 
-			return Ok(vec![r, g, b, a]);
+			return Ok(vec![utils::round(r, 4), utils::round(g, 4), utils::round(b, 4), a]);
 		}
 
-		return Ok(vec![r, g, b])
+		return Ok(vec![utils::round(r, 4), utils::round(g, 4), utils::round(b, 4)])
 	}
 
 	Err(Error::Format)
+}
+
+// rgb -> rgba(81%,89%,12%,1),rgb(81,89,12),rgba(81%,89%,12%,0.3) etc..
+// return -> #cee21eff,#51590c,#CEE21E4C etc...
+pub fn rgb2hex(color: &Color) -> Result<String, Error> {
+	let cap = handle_rgb(color)?;
+	let mut value: Vec<f32> = vec![];
+	let mut hex = String::from("#");
+
+	for n in &cap {
+		value.push(n * 255f32);
+	}
+
+	for n in 0..3usize {
+		if value[n] == 0f32 {
+			hex.push_str("00");
+			continue;
+		}
+
+		let low = (value[n] / 16f32) as usize;
+		let high = (value[n] % 16f32) as usize;
+		hex.push_str(map::map_rgb(&low));
+		hex.push_str(map::map_rgb(&high));
+	}
+
+	if color.to_alpha {
+		let mut alpha = 1f32;
+		if cap.len() == 4 {
+			alpha = cap[3];
+		}
+		let hexadecimal = &utils::handel_alpha_to_hexadecimal(alpha);
+		if color.to_android {
+			hex.insert_str(0, hexadecimal);
+		} else {
+			hex.push_str(hexadecimal);
+		}
+	}
+
+	if color.to_upper {
+		Ok(hex)
+	} else {
+		Ok(hex.to_lowercase())
+	}
 }
 
 // rgb -> rgb( 81 , 89% , 10%), rgba(81%,89%,10%,0.5)
@@ -118,4 +163,67 @@ pub fn rgb2cmyk(color: &Color) -> Result<String, Error> {
 	} else {
 		Ok(format!("cmyk({},{},{},{})", cmyk[0], cmyk[1], cmyk[2], cmyk[3]))
 	}
+}
+
+// rgb -> rgb(81,89,12), rgba(81,89,12,1)
+// return -> hsv(66,86.52%,34.9%)
+// https://www.rapidtables.com/convert/color/rgb-to-cmyk.html
+pub fn rgb2hsv(color: &Color) -> Result<String, Error> {
+	let cap: Vec<f32> = handle_rgb(&color)?;
+	let rgb = &cap.clone()[0..3];
+
+	let r = rgb[0];
+	let g = rgb[1];
+	let b = rgb[2];
+	let mut h = 0f32;
+	let s;
+	let v;
+
+	let max = *rgb.iter().max_by(|x, y| x.partial_cmp(y).unwrap()).unwrap();
+	let min = *rgb.iter().min_by(|x, y| x.partial_cmp(y).unwrap()).unwrap();
+	let mid = max - min;
+
+	if mid == 0f32 {
+		h = 0f32;
+	} else if max == r {
+		h = 60f32 * (((g - b) / mid) % 6f32);
+	} else if max == g {
+		h = 60f32 * ((b - r) / mid + 2f32);
+	} else if max == b {
+		h = 60f32 * ((r - g) / mid + 4f32);
+	}
+
+	if max == 0f32 {
+		s = 0f32;
+	} else {
+		s = (mid / max * 10000f32).round() / 100f32; // keep two decimals
+	}
+
+	v = (max * 10000f32).round() / 100f32;
+
+	if color.to_upper {
+		Ok(format!("HSV({},{}%,{}%)", (h * 100f32).round() / 100f32, s, v))
+	} else {
+		Ok(format!("hsv({},{}%,{}%)", (h * 100f32).round() / 100f32, s, v))
+	}
+}
+
+// rgb -> rgb(81,89,12), rgba(81,89,12,1)
+// return -> rgb(66,86.52%,34.9%)
+pub fn rgb2rgb(color: &Color) -> Result<String, Error> {
+	let cap: Vec<f32> = handle_rgb(&color)?;
+	let mut alpha = 1f32;
+	let mut rgb = String::new();
+
+	if cap.len() == 4 {
+		alpha = cap[3];
+	}
+
+	if color.to_upper {
+		if color.to_alpha {
+			
+		}
+	}
+
+	Ok(rgb)
 }

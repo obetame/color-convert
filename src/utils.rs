@@ -53,8 +53,8 @@ pub fn handel_alpha_to_hexadecimal(alpha: f32) -> String {
 }
 
 // convert value_string to number
-// "50%" -> 0.5; "0.5" -> 0.5; ".5" -> 0.5, "244" -> 244.0
-pub fn convert_value_to_number(value: &str) ->f32 {
+// "50%" -> 0.5; "0.5" -> 0.5; ".5" -> 0.5, "244" -> 0.094
+pub fn convert_rgb_value_to_number(value: &str) ->f32 {
 	let result;
 	if value.contains("%") {
 		let n = value.replace("%", "");
@@ -65,6 +65,26 @@ pub fn convert_value_to_number(value: &str) ->f32 {
 	} else {
 		result = match value.parse::<f32>() {
 			Ok(value) => value / 255f32,
+			Err(_error) => 0f32,
+		};
+	}
+
+	result
+}
+
+// convert value_string to number
+// "50%" -> 0.5; "0.5" -> 0.5; ".5" -> 0.5
+pub fn convert_alpha_value_to_number(value: &str) ->f32 {
+	let result;
+	if value.contains("%") {
+		let n = value.replace("%", "");
+		result = match n.parse::<f32>() {
+			Ok(value) => value / 100f32,
+			Err(_error) => 0f32,
+		};
+	} else {
+		result = match value.parse::<f32>() {
+			Ok(value) => value,
 			Err(_error) => 0f32,
 		};
 	}
@@ -97,4 +117,11 @@ pub fn convert_f32_to_string(v: f32) -> String {
 	} else {
 		format!("{:.2}", v)
 	}
+}
+
+// setting accuracy
+pub fn round(value: f32, digit: u32) -> f32 {
+	let a = 10usize.pow(digit) as f32;
+
+	(value * a).round() / a
 }
