@@ -59,7 +59,7 @@ pub fn rgb2hex(color: &Color) -> Result<String, Error> {
 		}
 		let hexadecimal = &utils::handel_alpha_to_hexadecimal(alpha);
 		if color.to_android {
-			hex.insert_str(0, hexadecimal);
+			hex.insert_str(1, hexadecimal);
 		} else {
 			hex.push_str(hexadecimal);
 		}
@@ -213,15 +213,23 @@ pub fn rgb2hsv(color: &Color) -> Result<String, Error> {
 pub fn rgb2rgb(color: &Color) -> Result<String, Error> {
 	let cap: Vec<f32> = handle_rgb(&color)?;
 	let mut alpha = 1f32;
-	let mut rgb = String::new();
 
 	if cap.len() == 4 {
 		alpha = cap[3];
 	}
 
+	let rgb;
 	if color.to_upper {
 		if color.to_alpha {
-			
+			rgb = format!("RGBA({},{},{},{})", &cap[0], &cap[1], &cap[2], alpha);
+		} else {
+			rgb = format!("RGB({},{},{})", &cap[0], &cap[1], &cap[2]);
+		}
+	} else {
+		if color.to_alpha {
+			rgb = format!("rgba({},{},{},{})", &cap[0], &cap[1], &cap[2], alpha);
+		} else {
+			rgb = format!("rgb({},{},{})", &cap[0], &cap[1], &cap[2]);
 		}
 	}
 

@@ -1,11 +1,11 @@
 extern crate color_convert;
+pub mod common;
 
 #[cfg(test)]
 mod tests {
 	use color_convert::color::Color;
-//	use color_convert::handles::map;
 	use color_convert::handles::hex;
-//	use color_convert::utils;
+	use common::init_color;
 
 	#[test]
 	fn test_hex_handle() {
@@ -30,22 +30,20 @@ mod tests {
 	fn test_hex2rgb() {
 		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
 		let hex_result = vec![
-			"RGB(128,255,255)", "rgb(255,255,255)", "rgba(128,255,255,1.00)",
-			"RGB(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)",
-			"RGB(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)",
-			"RGB(255,255,255)", "rgb(255,255,128)", "rgba(255,255,255,0.50)"
+			vec!["rgb(128,255,255)", "RGB(128,255,255)", "rgb(255,255,255)", "rgba(128,255,255,1.00)", "RGB(255,255,255)", "RGBA(128,255,255,1.00)", "rgba(255,255,255,0.50)", "RGBA(255,255,255,0.50)"],
+			vec!["rgb(200,200,200)", "RGB(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)", "RGB(200,200,200)", "RGBA(200,200,200,1)", "rgba(200,200,200,1)", "RGBA(200,200,200,1)"],
+			vec!["rgb(221,221,221)", "RGB(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)", "RGB(221,221,221)", "RGBA(221,221,221,1)", "rgba(221,221,221,1)", "RGBA(221,221,221,1)"],
+			vec!["rgb(255,255,255)", "RGB(255,255,255)", "rgb(255,255,128)", "rgba(255,255,255,0.50)", "RGB(255,255,128)", "RGBA(255,255,255,0.50)", "rgba(255,255,128,1.00)", "RGBA(255,255,128,1.00)"]
 		];
 
-		for (index, color) in hex_vec.iter().enumerate() {
-			for i in 0..3 {
-				let mut color = Color::new(color, false, false, false);
-				match i {
-					0 => assert_eq!(color.upper(true).to_rgb().unwrap(), hex_result[index * 3]),
-					1 => assert_eq!(color.android(true).to_rgb().unwrap(), hex_result[index * 3 + 1]),
-					2 => assert_eq!(color.alpha(true).to_rgb().unwrap(), hex_result[index * 3 + 2]),
-					_ => println!("noting")
-				}
+		let test_color = init_color(hex_vec);
+		for (i, vec_color) in test_color.iter().enumerate() {
+//			println!("vec![");
+			for (index, color) in vec_color.iter().enumerate() {
+				assert_eq!(hex_result[i][index], color.to_rgb().unwrap());
+//				print!("{:?}, ", color.to_rgb().unwrap());
 			}
+//			println!("]");
 		}
 	}
 
@@ -53,22 +51,20 @@ mod tests {
 	fn test_hex2hex() {
 		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
 		let hex_result = vec![
-			"#80FFFF", "#ffffff", "#80ffffff",
-			"#C8C8C8", "#c8c8c8", "#c8c8c8ff",
-			"#DDDDDD", "#dddddd", "#ddddddff",
-			"#FFFFFF", "#ffff80", "#ffffff80"
+			vec!["#80ffff", "#80FFFF", "#ffffff", "#80ffffff", "#FFFFFF", "#80FFFFFF", "#80ffffff", "#80FFFFFF"],
+			vec!["#c8c8c8", "#C8C8C8", "#c8c8c8", "#c8c8c8ff", "#C8C8C8", "#C8C8C8FF", "#ffc8c8c8", "#FFC8C8C8"],
+			vec!["#dddddd", "#DDDDDD", "#dddddd", "#ddddddff", "#DDDDDD", "#DDDDDDFF", "#ffdddddd", "#FFDDDDDD"],
+			vec!["#ffffff", "#FFFFFF", "#ffff80", "#ffffff80", "#FFFF80", "#FFFFFF80", "#ffffff80", "#FFFFFF80"]
 		];
 
-		for (index, color) in hex_vec.iter().enumerate() {
-			for i in 0..3 {
-				let mut color = Color::new(color, false, false, false);
-				match i {
-					0 => assert_eq!(color.upper(true).to_hex().unwrap(), hex_result[index * 3]),
-					1 => assert_eq!(color.android(true).to_hex().unwrap(), hex_result[index * 3 + 1]),
-					2 => assert_eq!(color.alpha(true).to_hex().unwrap(), hex_result[index * 3 + 2]),
-					_ => println!("noting")
-				}
+		let test_color = init_color(hex_vec);
+		for (i, vec_color) in test_color.iter().enumerate() {
+//			print!("vec![");
+			for (index, color) in vec_color.iter().enumerate() {
+				assert_eq!(hex_result[i][index], color.to_hex().unwrap());
+//				print!("{:?}, ", color.to_hex().unwrap());
 			}
+//			println!("],");
 		}
 	}
 
@@ -76,81 +72,62 @@ mod tests {
 	fn test_hex2hsl() {
 		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
 		let hex_result = vec![
-			"HSL(180.00,100%,75.09%)", "hsl(0,0,100%)", "hsla(180.00,100%,75.09%,1)",
-			"HSL(0,0,78.43%)", "hsl(0,0,78.43%)", "hsla(0,0,78.43%,1)",
-			"HSL(0,0,86.66%)", "hsl(0,0,86.66%)", "hsla(0,0,86.66%,1)",
-			"HSL(0,0,100%)", "hsl(60.00,100%,75.09%)", "hsla(0,0,100%,0.5)"
+			vec!["hsl(180.00,100%,75.1%)", "HSL(180.00,100%,75.1%)", "hsl(0,0,100%)", "hsla(180.00,100%,75.1%,1)", "HSL(0,0,100%)", "HSLA(180.00,100%,75.1%,1)", "hsla(0,0,100%,0.5)", "HSLA(0,0,100%,0.5)", ],
+			vec!["hsl(0,0,78.43%)", "HSL(0,0,78.43%)", "hsl(0,0,78.43%)", "hsla(0,0,78.43%,1)", "HSL(0,0,78.43%)", "HSLA(0,0,78.43%,1)", "hsla(0,0,78.43%,1)", "HSLA(0,0,78.43%,1)", ],
+			vec!["hsl(0,0,86.67%)", "HSL(0,0,86.67%)", "hsl(0,0,86.67%)", "hsla(0,0,86.67%,1)", "HSL(0,0,86.67%)", "HSLA(0,0,86.67%,1)", "hsla(0,0,86.67%,1)", "HSLA(0,0,86.67%,1)", ],
+			vec!["hsl(0,0,100%)", "HSL(0,0,100%)", "hsl(60.00,100%,75.1%)", "hsla(0,0,100%,0.5)", "HSL(60.00,100%,75.1%)", "HSLA(0,0,100%,0.5)", "hsla(60.00,100%,75.1%,1)", "HSLA(60.00,100%,75.1%,1)", ],
 		];
 
-		for (index, color) in hex_vec.iter().enumerate() {
-			for i in 0..3 {
-				let mut color = Color::new(color, false, false, false);
-				match i {
-					0 => assert_eq!(color.upper(true).to_hsl().unwrap(), hex_result[index * 3]),
-					1 => assert_eq!(color.android(true).to_hsl().unwrap(), hex_result[index * 3 + 1]),
-					2 => assert_eq!(color.alpha(true).to_hsl().unwrap(), hex_result[index * 3 + 2]),
-					_ => println!("noting")
-				}
+		let test_color = init_color(hex_vec);
+		for (i, vec_color) in test_color.iter().enumerate() {
+//			print!("vec![");
+			for (index, color) in vec_color.iter().enumerate() {
+				assert_eq!(hex_result[i][index], color.to_hsl().unwrap());
+//				print!("{:?}, ", color.to_hsl().unwrap());
 			}
+//			println!("],");
 		}
 	}
 
 	#[test]
 	fn test_hex2cmykl() {
-		let rgb_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
-		let rgb_result = vec![
-			"CMYK(0.5,0,0,0)", "cmyk(0,0,0,0)", "cmyk(0.5,0,0,0)",
-			"CMYK(0,0,0,0.22)", "cmyk(0,0,0,0.22)", "cmyk(0.22,0.22,0.22,0)",
-			"CMYK(0,0,0,0.13)", "cmyk(0,0,0,0.13)", "cmyk(0.13,0.13,0.13,0)",
-			"CMYK(0,0,0,0)", "cmyk(0,0,0.5,0)", "cmyk(0,0,0,0)",
+		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let hex_result = vec![
+			vec!["cmyk(0.5,0,0,0)", "CMYK(0.5,0,0,0)", "cmyk(0,0,0,0)", "cmyk(0.5,0,0,0)", "CMYK(0,0,0,0)", "CMYK(0.5,0,0,0)", "cmyk(0,0,0,0)", "CMYK(0,0,0,0)", ],
+			vec!["cmyk(0,0,0,0.22)", "CMYK(0,0,0,0.22)", "cmyk(0,0,0,0.22)", "cmyk(0.22,0.22,0.22,0)", "CMYK(0,0,0,0.22)", "CMYK(0.22,0.22,0.22,0)", "cmyk(0.22,0.22,0.22,0)", "CMYK(0.22,0.22,0.22,0)", ],
+			vec!["cmyk(0,0,0,0.13)", "CMYK(0,0,0,0.13)", "cmyk(0,0,0,0.13)", "cmyk(0.13,0.13,0.13,0)", "CMYK(0,0,0,0.13)", "CMYK(0.13,0.13,0.13,0)", "cmyk(0.13,0.13,0.13,0)", "CMYK(0.13,0.13,0.13,0)", ],
+			vec!["cmyk(0,0,0,0)", "CMYK(0,0,0,0)", "cmyk(0,0,0.5,0)", "cmyk(0,0,0,0)", "CMYK(0,0,0.5,0)", "CMYK(0,0,0,0)", "cmyk(0,0,0.5,0)", "CMYK(0,0,0.5,0)", ],
 		];
 
-		for (index, color) in rgb_vec.iter().enumerate() {
-			for i in 0..3 {
-				let mut color = Color::new(color, false, false, false);
-				match i {
-					0 => assert_eq!(color.upper(true).to_cmyk().unwrap(), rgb_result[index * 3]),
-					1 => assert_eq!(color.android(true).to_cmyk().unwrap(), rgb_result[index * 3 + 1]),
-					2 => assert_eq!(color.alpha(true).to_cmyk().unwrap(), rgb_result[index * 3 + 2]),
-					_ => println!("noting")
-				}
-//				match i {
-//					0 => println!("{}", color.upper(true).to_cmyk().unwrap()),
-//					1 => println!("{}", color.android(true).to_cmyk().unwrap()),
-//					2 => println!("{}", color.alpha(true).to_cmyk().unwrap()),
-//					_ => println!("noting")
-//				}
+		let test_color = init_color(hex_vec);
+		for (i, vec_color) in test_color.iter().enumerate() {
+//			print!("vec![");
+			for (index, color) in vec_color.iter().enumerate() {
+				assert_eq!(hex_result[i][index], color.to_cmyk().unwrap());
+//				print!("{:?}, ", color.to_cmyk().unwrap());
 			}
+//			println!("],");
 		}
 	}
 
 	#[test]
 	fn test_hex2hsv() {
-		let rgb_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
-		let rgb_result = vec![
-			"HSL(180.00,100%,75.09%)", "hsl(0,0,100%)", "hsla(180.00,100%,75.09%,1)",
-			"HSL(0,0,78.43%)", "hsl(0,0,78.43%)", "hsla(0,0,78.43%,1)",
-			"HSL(0,0,86.66%)", "hsl(0,0,86.66%)", "hsla(0,0,86.66%,1)",
-			"HSL(0,0,100%)", "hsl(60.00,100%,75.09%)", "hsla(0,0,100%,0.5)",
+		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
+		let hex_result = vec![
+			vec!["hsl(180.00,100%,75.1%)", "HSL(180.00,100%,75.1%)", "hsl(0,0,100%)", "hsla(180.00,100%,75.1%,1)", "HSL(0,0,100%)", "HSLA(180.00,100%,75.1%,1)", "hsla(0,0,100%,0.5)", "HSLA(0,0,100%,0.5)", ],
+			vec!["hsl(0,0,78.43%)", "HSL(0,0,78.43%)", "hsl(0,0,78.43%)", "hsla(0,0,78.43%,1)", "HSL(0,0,78.43%)", "HSLA(0,0,78.43%,1)", "hsla(0,0,78.43%,1)", "HSLA(0,0,78.43%,1)", ],
+			vec!["hsl(0,0,86.67%)", "HSL(0,0,86.67%)", "hsl(0,0,86.67%)", "hsla(0,0,86.67%,1)", "HSL(0,0,86.67%)", "HSLA(0,0,86.67%,1)", "hsla(0,0,86.67%,1)", "HSLA(0,0,86.67%,1)", ],
+			vec!["hsl(0,0,100%)", "HSL(0,0,100%)", "hsl(60.00,100%,75.1%)", "hsla(0,0,100%,0.5)", "HSL(60.00,100%,75.1%)", "HSLA(0,0,100%,0.5)", "hsla(60.00,100%,75.1%,1)", "HSLA(60.00,100%,75.1%,1)", ],
 		];
 
-		for (index, color) in rgb_vec.iter().enumerate() {
-//			println!("{:?}", color);
-			for i in 0..3 {
-				let mut color = Color::new(color, false, false, false);
-				match i {
-					0 => assert_eq!(color.upper(true).to_hsv().unwrap(), rgb_result[index * 3]),
-					1 => assert_eq!(color.android(true).to_hsv().unwrap(), rgb_result[index * 3 + 1]),
-					2 => assert_eq!(color.alpha(true).to_hsv().unwrap(), rgb_result[index * 3 + 2]),
-					_ => println!("noting")
-				}
-//				match i {
-//					0 => println!("{}", color.upper(true).to_hsv().unwrap()),
-//					1 => println!("{}", color.android(true).to_hsv().unwrap()),
-//					2 => println!("{}", color.alpha(true).to_hsv().unwrap()),
-//					_ => println!("noting")
-//				}
+		let test_color = init_color(hex_vec);
+		for (i, vec_color) in test_color.iter().enumerate() {
+//			print!("vec![");
+			for (index, color) in vec_color.iter().enumerate() {
+				assert_eq!(hex_result[i][index], color.to_hsv().unwrap());
+//				print!("{:?}, ", color.to_hsv().unwrap());
 			}
+//			println!("],");
 		}
 	}
 }

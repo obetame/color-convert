@@ -1,4 +1,4 @@
-use handles::{hex, rgb};
+use handles::{hex, rgb, hsl};
 use std::fmt;
 use std::error::Error as StdError;
 
@@ -67,6 +67,8 @@ impl<'a> Color<'a> {
 	pub fn to_rgb(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2rgb(self),
+			ColorMode::HSL(_) => hsl::hsl2rgb(self),
+			ColorMode::HSLA(_) => hsl::hsl2rgb(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -76,6 +78,8 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2hex(self),
 			ColorMode::RGB(_) => rgb::rgb2hex(self),
 			ColorMode::RGBA(_) => rgb::rgb2hex(self),
+			ColorMode::HSL(_) => hsl::hsl2hex(self),
+			ColorMode::HSLA(_) => hsl::hsl2hex(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
