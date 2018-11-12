@@ -125,3 +125,12 @@ pub fn round(value: f32, digit: u32) -> f32 {
 
 	(value * a).round() / a
 }
+
+// convert decimal to percent
+pub fn decimal_to_percent(value: f32) -> String {
+	if value < 1f32 {
+		format!("{}%", round(value, 2) * 100f32)
+	} else {
+		format!("{}", round(value, 2))
+	}
+}

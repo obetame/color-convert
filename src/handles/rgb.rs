@@ -218,18 +218,22 @@ pub fn rgb2rgb(color: &Color) -> Result<String, Error> {
 		alpha = cap[3];
 	}
 
+	let r = utils::decimal_to_percent(cap[0]);
+	let g = utils::decimal_to_percent(cap[1]);
+	let b = utils::decimal_to_percent(cap[2]);
+
 	let rgb;
 	if color.to_upper {
 		if color.to_alpha {
-			rgb = format!("RGBA({},{},{},{})", &cap[0], &cap[1], &cap[2], alpha);
+			rgb = format!("RGBA({},{},{},{})", r, g, b, if alpha > 1f32 {1f32} else {alpha});
 		} else {
-			rgb = format!("RGB({},{},{})", &cap[0], &cap[1], &cap[2]);
+			rgb = format!("RGB({},{},{})", r, g, b);
 		}
 	} else {
 		if color.to_alpha {
-			rgb = format!("rgba({},{},{},{})", &cap[0], &cap[1], &cap[2], alpha);
+			rgb = format!("rgba({},{},{},{})", r, g, b, if alpha > 1f32 {1f32} else {alpha});
 		} else {
-			rgb = format!("rgb({},{},{})", &cap[0], &cap[1], &cap[2]);
+			rgb = format!("rgb({},{},{})", r, g, b);
 		}
 	}
 

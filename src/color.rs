@@ -69,6 +69,8 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2rgb(self),
 			ColorMode::HSL(_) => hsl::hsl2rgb(self),
 			ColorMode::HSLA(_) => hsl::hsl2rgb(self),
+			ColorMode::RGB(_) => rgb::rgb2rgb(self),
+			ColorMode::RGBA(_) => rgb::rgb2rgb(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
