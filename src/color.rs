@@ -1,4 +1,4 @@
-use handles::{hex, rgb, hsl};
+use handles::{hex, rgb, hsl, cmyk, hsv};
 use std::fmt;
 use std::error::Error as StdError;
 
@@ -67,10 +67,12 @@ impl<'a> Color<'a> {
 	pub fn to_rgb(&self) -> Result<String, Error> {
 		match self.mode {
 			ColorMode::HEX(_) => hex::hex2rgb(self),
-			ColorMode::HSL(_) => hsl::hsl2rgb(self),
-			ColorMode::HSLA(_) => hsl::hsl2rgb(self),
 			ColorMode::RGB(_) => rgb::rgb2rgb(self),
 			ColorMode::RGBA(_) => rgb::rgb2rgb(self),
+			ColorMode::HSL(_) => hsl::hsl2rgb(self),
+			ColorMode::HSLA(_) => hsl::hsl2rgb(self),
+			ColorMode::CMYK(_) => cmyk::cmyk2rgb(self),
+			ColorMode::HSV(_) => hsv::hsv2rgb(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -82,6 +84,8 @@ impl<'a> Color<'a> {
 			ColorMode::RGBA(_) => rgb::rgb2hex(self),
 			ColorMode::HSL(_) => hsl::hsl2hex(self),
 			ColorMode::HSLA(_) => hsl::hsl2hex(self),
+			ColorMode::CMYK(_) => cmyk::cmyk2hex(self),
+			ColorMode::HSV(_) => hsv::hsv2hex(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -91,6 +95,10 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2hsl(self),
 			ColorMode::RGB(_) => rgb::rgb2hsl(self),
 			ColorMode::RGBA(_) => rgb::rgb2hsl(self),
+			ColorMode::HSL(_) => hsl::hsl2hsl(self),
+			ColorMode::HSLA(_) => hsl::hsl2hsl(self),
+			ColorMode::CMYK(_) => cmyk::cmyk2hsl(self),
+			ColorMode::HSV(_) => hsv::hsv2hsl(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -100,6 +108,10 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2cmyk(self),
 			ColorMode::RGB(_) => rgb::rgb2cmyk(self),
 			ColorMode::RGBA(_) => rgb::rgb2cmyk(self),
+			ColorMode::HSL(_) => hsl::hsl2cmyk(self),
+			ColorMode::HSLA(_) => hsl::hsl2cmyk(self),
+			ColorMode::CMYK(_) => cmyk::cmyk2cmyk(self),
+			ColorMode::HSV(_) => hsv::hsv2cmyk(self),
 			_ => Err(Error::NotMatch)
 		}
 	}
@@ -109,6 +121,10 @@ impl<'a> Color<'a> {
 			ColorMode::HEX(_) => hex::hex2hsl(self),
 			ColorMode::RGB(_) => rgb::rgb2hsv(self),
 			ColorMode::RGBA(_) => rgb::rgb2hsv(self),
+			ColorMode::HSL(_) => hsl::hsl2hsv(self),
+			ColorMode::HSLA(_) => hsl::hsl2hsv(self),
+			ColorMode::CMYK(_) => cmyk::cmyk2hsv(self),
+			ColorMode::HSV(_) => hsv::hsv2hsv(self),
 			_ => Err(Error::NotMatch)
 		}
 	}

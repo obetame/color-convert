@@ -73,7 +73,7 @@ pub fn hsl2rgb(color: &Color) -> Result<String, Error> {
 
 		let rgb;
 		if color.to_alpha {
-			rgb = format!("rgba({},{},{},{})", r, g, b, alpha);
+			rgb = format!("rgba({},{},{},1)", r, g, b);
 		} else {
 			rgb = format!("rgb({},{},{})", r, g, b);
 		}
@@ -90,4 +90,42 @@ pub fn hsl2hex(color: &Color) -> Result<String, Error> {
 	let hex = handle_rgb::rgb2hex(new_color)?;
 
 	Ok(hex)
+}
+
+pub fn hsl2hsl(color: &Color) -> Result<String, Error> {
+	let re = Regex::new(r"(?i)hsla?\(\s*(?P<h>\d{1,3}\.?\d*%?)\s*,\s*(?P<s>\d{1,3}\.?\d*%?)\s*,\s*(?P<l>\d{1,3}\.?\d*%?)\s*,?\s*(?P<alpha>\.?\d{1,3}\.?\d*%?)?\s*\)").expect("Parse hsl value error");
+	let cap = re.captures(color.to_str());
+
+	if let Some(value) = cap {
+		let mut alpha = 1f32;
+
+		if let Some(value) = value.get(4) {
+			alpha = utils::convert_alpha_value_to_number(value.as_str());
+		}
+
+		let hsl;
+		if color.to_alpha {
+			hsl = format!("hsla({},{},{},{})", &value["h"], &value["s"], &value["l"], alpha);
+		} else {
+			hsl = format!("hsl({},{},{})", &value["h"], &value["s"], &value["l"]);
+		}
+
+		return Ok(if color.to_upper {hsl.to_uppercase()} else {hsl});
+	}
+
+	Err(Error::Format)
+}
+
+pub fn hsl2cmyk(color: &Color) -> Result<String, Error> {
+	let rgb = color.to_rgb()?;
+	let rgb_color = color.copy(&rgb);
+
+	Ok(rgb_color.to_cmyk()?)
+}
+
+pub fn hsl2hsv(color: &Color) -> Result<String, Error> {
+	let rgb = color.to_rgb()?;
+	let rgb_color = color.copy(&rgb);
+
+	Ok(rgb_color.to_hsv()?)
 }
