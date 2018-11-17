@@ -1,7 +1,6 @@
 use regex::Regex;
 use color::{Color, Error};
 use utils;
-use handles::rgb as handle_rgb;
 
 pub fn cmyk2rgb(color: &Color) -> Result<String, Error> {
 	let re = Regex::new(r"(?i)cmyk\(\s*(?P<c>\d{1,3}\.?\d*)\s*,\s*(?P<m>\d{1,3}\.?\d*)\s*,\s*(?P<y>\d{1,3}\.?\d*)\s*,?\s*(?P<k>\.?\d{1,3}\.?\d*)\s*\)").expect("Parse hsl value error");
@@ -44,7 +43,7 @@ pub fn cmyk2hsl(color: &Color) -> Result<String, Error> {
 }
 
 pub fn cmyk2cmyk(color: &Color) -> Result<String, Error> {
-	let rgb = cmyk2rgb(&color)?; // check format
+	let _ = cmyk2rgb(&color)?; // check format
 	let cmyk = color.to_str();
 
 	Ok(if color.to_upper {cmyk.to_uppercase()} else {cmyk.to_lowercase()})

@@ -1,7 +1,6 @@
 use regex::Regex;
 use color::{Color, Error};
 use utils;
-use handles::rgb as handle_rgb;
 
 fn handle_hsl(p: f32, q: f32, t: f32) -> f32 {
 	let pi = p;
@@ -73,7 +72,7 @@ pub fn hsl2rgb(color: &Color) -> Result<String, Error> {
 
 		let rgb;
 		if color.to_alpha {
-			rgb = format!("rgba({},{},{},1)", r, g, b);
+			rgb = format!("rgba({},{},{},{})", r, g, b, alpha);
 		} else {
 			rgb = format!("rgb({},{},{})", r, g, b);
 		}
@@ -87,9 +86,8 @@ pub fn hsl2rgb(color: &Color) -> Result<String, Error> {
 pub fn hsl2hex(color: &Color) -> Result<String, Error> {
 	let rgb = color.to_rgb()?;
 	let new_color = &color.copy(&rgb);
-	let hex = handle_rgb::rgb2hex(new_color)?;
 
-	Ok(hex)
+	Ok(new_color.to_hex()?)
 }
 
 pub fn hsl2hsl(color: &Color) -> Result<String, Error> {

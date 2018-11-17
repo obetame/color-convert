@@ -73,7 +73,6 @@ impl<'a> Color<'a> {
 			ColorMode::HSLA(_) => hsl::hsl2rgb(self),
 			ColorMode::CMYK(_) => cmyk::cmyk2rgb(self),
 			ColorMode::HSV(_) => hsv::hsv2rgb(self),
-			_ => Err(Error::NotMatch)
 		}
 	}
 
@@ -86,7 +85,6 @@ impl<'a> Color<'a> {
 			ColorMode::HSLA(_) => hsl::hsl2hex(self),
 			ColorMode::CMYK(_) => cmyk::cmyk2hex(self),
 			ColorMode::HSV(_) => hsv::hsv2hex(self),
-			_ => Err(Error::NotMatch)
 		}
 	}
 
@@ -99,7 +97,6 @@ impl<'a> Color<'a> {
 			ColorMode::HSLA(_) => hsl::hsl2hsl(self),
 			ColorMode::CMYK(_) => cmyk::cmyk2hsl(self),
 			ColorMode::HSV(_) => hsv::hsv2hsl(self),
-			_ => Err(Error::NotMatch)
 		}
 	}
 
@@ -112,7 +109,6 @@ impl<'a> Color<'a> {
 			ColorMode::HSLA(_) => hsl::hsl2cmyk(self),
 			ColorMode::CMYK(_) => cmyk::cmyk2cmyk(self),
 			ColorMode::HSV(_) => hsv::hsv2cmyk(self),
-			_ => Err(Error::NotMatch)
 		}
 	}
 
@@ -125,7 +121,6 @@ impl<'a> Color<'a> {
 			ColorMode::HSLA(_) => hsl::hsl2hsv(self),
 			ColorMode::CMYK(_) => cmyk::cmyk2hsv(self),
 			ColorMode::HSV(_) => hsv::hsv2hsv(self),
-			_ => Err(Error::NotMatch)
 		}
 	}
 }
