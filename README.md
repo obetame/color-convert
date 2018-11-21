@@ -5,6 +5,21 @@ Convert color to each other by rust.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zhouyuexie/color-convert/blob/master/LICENSE-MIT)
 
+## Installation
+
+Add this to the Cargo.toml file of your project:
+
+```toml
+[dependencies]
+color-convert = "0.1.0"
+```
+
+Don't forget to add the external crate:
+
+```rust
+extern crate color_convert;
+```
+
 ## Getting Started
 
 ```rust

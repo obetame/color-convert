@@ -2,7 +2,14 @@
 name = "color-convert"
 version = "0.1.0"
 authors = ["quietboy <zhouyuexie@gmail.com>"]
-description = "Convert color to each other by rust."
+description = "Support RGB,RGBA,HEX,HSL,HSLA,HSV,CMYK to convert each other, write by rust."
+keywords = ["color", "convert"]
+categories = ["text-processing"]
+readme = "./README.md"
+repository = "https://github.com/zhouyuexie/color-convert"
+
+[badges]
+travis-ci = { repository = "https://travis-ci.com/zhouyuexie/color-convert", branch = "master" }
 
 [dependencies]
 regex = "1.0.5"
