@@ -6,6 +6,7 @@ description = "Support RGB,RGBA,HEX,HSL,HSLA,HSV,CMYK to convert each other, wri
 keywords = ["color", "convert"]
 categories = ["text-processing"]
 readme = "./README.md"
+license-file = "./LICENES-MIT"
 repository = "https://github.com/zhouyuexie/color-convert"
 
 [badges]
