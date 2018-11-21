@@ -4,22 +4,17 @@ extern crate color_convert;
 mod tests {
 	use color_convert::utils;
 	use color_convert::color::Color;
-	use color_convert::handles::hex;
 	use std::panic;
 
 	#[test]
 	fn test_utils_get_hex_alpha_value() {
-		let hex = "#80ffffff";
-		let hex1 = "#ffffff80";
-		let setting = Color::new("rgb", false, true, false);
-		let setting1 = Color::new("rgb", false, false, false);
-		let hex_vec: Vec<&str> = hex::handle_hex_value(&hex1, &setting1).unwrap();
-		let hex_vec1: Vec<&str> = hex::handle_hex_value(&hex, &setting).unwrap();
+		let color = Color::init("#80ffffff", false, true, false);
+		let color1 = Color::init("#ffffff80", false, false, false);
 
-		let data = utils::get_hex_alpha_value(&hex_vec, &setting);
-		let data1 = utils::get_hex_alpha_value(&hex_vec1, &setting1);
+		let data = utils::get_hex_alpha_value(&color);
+		let data1 = utils::get_hex_alpha_value(&color1);
 
-		assert_eq!(1f32, data);
+		assert_eq!(0.502f32, data);
 		assert_eq!(0.502f32, data1);
 	}
 
@@ -54,5 +49,11 @@ mod tests {
 		let hex_alpha = utils::handel_alpha_to_hexadecimal(alpha);
 
 		assert_eq!(hex_alpha, String::from("80"));
+	}
+
+	#[test]
+	fn test_round() {
+		assert_eq!(0.45f32, utils::round(0.4534f32, 2));
+		assert_eq!(0.4534f32, utils::round(0.4534f32, 4));
 	}
 }
