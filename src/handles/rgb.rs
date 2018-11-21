@@ -52,20 +52,20 @@ pub fn rgb2hex(color: &Color) -> Result<String, Error> {
 		hex.push_str(map::map_rgb(&high));
 	}
 
-	if color.to_alpha {
+	if color.alpha {
 		let mut alpha = 1f32;
 		if cap.len() == 4 {
 			alpha = cap[3];
 		}
 		let hexadecimal = &utils::handel_alpha_to_hexadecimal(alpha);
-		if color.to_android {
+		if color.android {
 			hex.insert_str(1, hexadecimal);
 		} else {
 			hex.push_str(hexadecimal);
 		}
 	}
 
-	if color.to_upper {
+	if color.upper {
 		Ok(hex)
 	} else {
 		Ok(hex.to_lowercase())
@@ -108,7 +108,7 @@ pub fn rgb2hsl(color: &Color) -> Result<String, Error> {
 	}
 
 	let mut hsl = format!("({},{},{}", utils::convert_f32_to_string(h), utils::convert_f32_to_percent(s), utils::convert_f32_to_percent(l));
-	if color.to_alpha {
+	if color.alpha {
 		hsl.push_str(",");
 		if cap.len() == 4usize {
 			hsl.push_str(&cap[3].to_string());
@@ -122,7 +122,7 @@ pub fn rgb2hsl(color: &Color) -> Result<String, Error> {
 		hsl.insert_str(0, "hsl");
 	}
 
-	if color.to_upper {
+	if color.upper {
 		hsl = hsl.to_uppercase()
 	}
 	Ok(hsl)
@@ -140,7 +140,7 @@ pub fn rgb2cmyk(color: &Color) -> Result<String, Error> {
 
 	let k = ((1f32 - max) * 100f32).round() / 100f32;
 	if k == 1f32 {
-		if color.to_upper {
+		if color.upper {
 			return Ok(String::from("CMYK(0,0,0,1)"));
 		} else {
 			return Ok(String::from("cmyk(0,0,0,1)"));
@@ -158,7 +158,7 @@ pub fn rgb2cmyk(color: &Color) -> Result<String, Error> {
 		}
 	}
 
-	if color.to_upper {
+	if color.upper {
 		Ok(format!("CMYK({},{},{},{})", cmyk[0], cmyk[1], cmyk[2], cmyk[3]))
 	} else {
 		Ok(format!("cmyk({},{},{},{})", cmyk[0], cmyk[1], cmyk[2], cmyk[3]))
@@ -201,7 +201,7 @@ pub fn rgb2hsv(color: &Color) -> Result<String, Error> {
 
 	v = (max * 10000f32).round() / 100f32;
 
-	if color.to_upper {
+	if color.upper {
 		Ok(format!("HSV({},{}%,{}%)", (h * 100f32).round() / 100f32, s, v))
 	} else {
 		Ok(format!("hsv({},{}%,{}%)", (h * 100f32).round() / 100f32, s, v))
@@ -223,14 +223,14 @@ pub fn rgb2rgb(color: &Color) -> Result<String, Error> {
 	let b = utils::decimal_to_percent(cap[2]);
 
 	let rgb;
-	if color.to_upper {
-		if color.to_alpha {
+	if color.upper {
+		if color.alpha {
 			rgb = format!("RGBA({},{},{},{})", r, g, b, if alpha > 1f32 {1f32} else {alpha});
 		} else {
 			rgb = format!("RGB({},{},{})", r, g, b);
 		}
 	} else {
-		if color.to_alpha {
+		if color.alpha {
 			rgb = format!("rgba({},{},{},{})", r, g, b, if alpha > 1f32 {1f32} else {alpha});
 		} else {
 			rgb = format!("rgb({},{},{})", r, g, b);

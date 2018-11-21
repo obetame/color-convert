@@ -6,50 +6,50 @@ use std::error::Error as StdError;
 #[derive(Debug)]
 pub struct Color<'a> {
 	pub mode: ColorMode<'a>,
-	pub to_upper: bool,
-	pub to_android: bool,
-	pub to_alpha: bool
+	pub upper: bool,
+	pub android: bool,
+	pub alpha: bool
 }
 impl<'a> Color<'a> {
 	// new one Color instance by all setting
-	pub fn new(mode: &'a str, to_upper: bool, to_android: bool, to_alpha: bool) -> Self {
+	pub fn init(mode: &'a str, upper: bool, android: bool, alpha: bool) -> Self {
 		Color {
 			mode: ColorMode::new(mode),
-			to_upper,
-			to_android,
-			to_alpha
+			upper,
+			android,
+			alpha
 		}
 	}
 	// new one color instance by default config
-	pub fn init(mode: &'a str) -> Self {
+	pub fn new(mode: &'a str) -> Self {
 		Color {
 			mode: ColorMode::new(mode),
-			to_upper: false,
-			to_android: false,
-			to_alpha: false
+			upper: false,
+			android: false,
+			alpha: false
 		}
 	}
 	// init new color from copy other colorValue
 	pub fn copy(&self, mode: &'a str) -> Self {
 		Color {
 			mode: ColorMode::new(mode),
-			to_upper: self.to_upper,
-			to_android: self.to_android,
-			to_alpha: self.to_alpha
+			upper: self.upper,
+			android: self.android,
+			alpha: self.alpha
 		}
 	}
 
 	// config Color config [to_upper, to_android, to_alpha]
-	pub fn upper(&mut self, to_upper: bool) -> &Self {
-		self.to_upper = to_upper;
+	pub fn to_upper(&mut self, to_upper: bool) -> &Self {
+		self.upper = to_upper;
 		self
 	}
-	pub fn android(&mut self, to_android: bool) -> &Self {
-		self.to_android = to_android;
+	pub fn to_android(&mut self, to_android: bool) -> &Self {
+		self.android = to_android;
 		self
 	}
-	pub fn alpha(&mut self, to_alpha: bool) -> &Self {
-		self.to_alpha = to_alpha;
+	pub fn to_alpha(&mut self, to_alpha: bool) -> &Self {
+		self.alpha = to_alpha;
 		self
 	}
 	pub fn to_str(&self) -> &str {

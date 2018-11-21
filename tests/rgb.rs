@@ -13,7 +13,7 @@ mod tests {
 		let rgb_result = vec!["0.3176,0.89,0.1,", "0.81,0.89,0.1,0.5,", "0.3176,0.349,0.0471,0.3,", "0.3176,0.349,0.0471,0.5,"];
 
 		for n in 0..4 {
-			let color = Color::init(rgb_vec[n]);
+			let color = Color::new(rgb_vec[n]);
 			let v = rgb::handle_rgb(&color).unwrap();
 
 			let mut result = String::from("");

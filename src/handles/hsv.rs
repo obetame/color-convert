@@ -59,13 +59,13 @@ pub fn hsv2rgb(color: &Color) -> Result<String, Error> {
 		g = utils::round((g + m) * 255f32, 2);
 		b = utils::round((b + m) * 255f32, 2);
 
-		let rgb = if color.to_alpha {
+		let rgb = if color.alpha {
 			format!("rgba({},{},{},1)", r, g, b)
 		} else {
 			format!("rgb({},{},{})", r, g, b)
 		};
 
-		return Ok(if color.to_upper {rgb.to_uppercase()} else {rgb});
+		return Ok(if color.upper {rgb.to_uppercase()} else {rgb});
 	}
 
 	Err(Error::Format)
@@ -98,7 +98,7 @@ pub fn hsv2hsv(color: &Color) -> Result<String, Error> {
 
 	if let Some(_) = cap {
 		let hsv = hsv.to_owned();
-		return Ok(if color.to_upper {hsv.to_uppercase()} else {hsv});
+		return Ok(if color.upper {hsv.to_uppercase()} else {hsv});
 	}
 
 	Err(Error::Format)

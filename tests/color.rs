@@ -7,11 +7,11 @@ mod tests {
 	
 	#[test]
 	fn test_color() {
-		let color = Color::new("rgb(1,1,1)", false, false, false);
+		let color = Color::init("rgb(1,1,1)", false, false, false);
 		assert_eq!(color.mode, ColorMode::new("rgb(1,1,1)"));
-		assert_eq!(color.to_upper, false);
-		assert_eq!(color.to_android, false);
-		assert_eq!(color.to_alpha, false);
+		assert_eq!(color.upper, false);
+		assert_eq!(color.android, false);
+		assert_eq!(color.alpha, false);
 	}
 
 	#[test]

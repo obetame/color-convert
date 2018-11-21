@@ -9,10 +9,10 @@ mod tests {
 
 	#[test]
 	fn test_hex_handle() {
-		let setting = Color::new("#80ffffff", false, true, false);
-		let setting1 = Color::new("#c8c8c8", false, false, false);
-		let setting2 = Color::new("#ddd", false, false, false);
-		let setting4 = Color::new("#80ffffff", false, false, false);
+		let setting = Color::init("#80ffffff", false, true, false);
+		let setting1 = Color::init("#c8c8c8", false, false, false);
+		let setting2 = Color::init("#ddd", false, false, false);
+		let setting4 = Color::init("#80ffffff", false, false, false);
 
 //		let hex_vec: Result<Vec<&str>, String> = hex::handle_hex_value(&hex, &setting);
 		let hex_vec = hex::handle_hex_value( &setting).unwrap();
@@ -30,10 +30,10 @@ mod tests {
 	fn test_hex2rgb() {
 		let hex_vec = vec!["#80ffffff", "#c8c8c8", "#ddd", "#ffffff80"];
 		let hex_result = vec![
-			vec!["rgb(128,255,255)", "RGB(128,255,255)", "rgb(255,255,255)", "rgba(128,255,255,1.00)", "RGB(255,255,255)", "RGBA(128,255,255,1.00)", "rgba(255,255,255,0.50)", "RGBA(255,255,255,0.50)"],
+			vec!["rgb(128,255,255)", "RGB(128,255,255)", "rgb(255,255,255)", "rgba(128,255,255,1)", "RGB(255,255,255)", "RGBA(128,255,255,1)", "rgba(255,255,255,0.5)", "RGBA(255,255,255,0.5)"],
 			vec!["rgb(200,200,200)", "RGB(200,200,200)", "rgb(200,200,200)", "rgba(200,200,200,1)", "RGB(200,200,200)", "RGBA(200,200,200,1)", "rgba(200,200,200,1)", "RGBA(200,200,200,1)"],
 			vec!["rgb(221,221,221)", "RGB(221,221,221)", "rgb(221,221,221)", "rgba(221,221,221,1)", "RGB(221,221,221)", "RGBA(221,221,221,1)", "rgba(221,221,221,1)", "RGBA(221,221,221,1)"],
-			vec!["rgb(255,255,255)", "RGB(255,255,255)", "rgb(255,255,128)", "rgba(255,255,255,0.50)", "RGB(255,255,128)", "RGBA(255,255,255,0.50)", "rgba(255,255,128,1.00)", "RGBA(255,255,128,1.00)"]
+			vec!["rgb(255,255,255)", "RGB(255,255,255)", "rgb(255,255,128)", "rgba(255,255,255,0.5)", "RGB(255,255,128)", "RGBA(255,255,255,0.5)", "rgba(255,255,128,1)", "RGBA(255,255,128,1)"]
 		];
 
 		let test_color = init_color(hex_vec);

@@ -71,13 +71,13 @@ pub fn hsl2rgb(color: &Color) -> Result<String, Error> {
 		}
 
 		let rgb;
-		if color.to_alpha {
+		if color.alpha {
 			rgb = format!("rgba({},{},{},{})", r, g, b, alpha);
 		} else {
 			rgb = format!("rgb({},{},{})", r, g, b);
 		}
 
-		return Ok(if color.to_upper {rgb.to_uppercase()} else {rgb});
+		return Ok(if color.upper {rgb.to_uppercase()} else {rgb});
 	}
 
 	Err(Error::Format)
@@ -102,13 +102,13 @@ pub fn hsl2hsl(color: &Color) -> Result<String, Error> {
 		}
 
 		let hsl;
-		if color.to_alpha {
+		if color.alpha {
 			hsl = format!("hsla({},{},{},{})", &value["h"], &value["s"], &value["l"], alpha);
 		} else {
 			hsl = format!("hsl({},{},{})", &value["h"], &value["s"], &value["l"]);
 		}
 
-		return Ok(if color.to_upper {hsl.to_uppercase()} else {hsl});
+		return Ok(if color.upper {hsl.to_uppercase()} else {hsl});
 	}
 
 	Err(Error::Format)

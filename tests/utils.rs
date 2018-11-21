@@ -8,8 +8,8 @@ mod tests {
 
 	#[test]
 	fn test_utils_get_hex_alpha_value() {
-		let color = Color::new("#80ffffff", false, true, false);
-		let color1 = Color::new("#ffffff80", false, false, false);
+		let color = Color::init("#80ffffff", false, true, false);
+		let color1 = Color::init("#ffffff80", false, false, false);
 
 		let data = utils::get_hex_alpha_value(&color);
 		let data1 = utils::get_hex_alpha_value(&color1);

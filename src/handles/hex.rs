@@ -1,5 +1,6 @@
 use color::{Color, Error};
 use handles::map;
+use utils;
 
 // hex -- #fff,#ffffff,#ffffff80,#80ffffff etc..
 // return -- ['f','f','f','f','f','f'],['f','f','f','f','f','f','8','0'] etc...
@@ -18,7 +19,7 @@ pub fn handle_hex_value<'a>(color: &'a Color) -> Result<Vec<&'a str>, Error> {
 		},
 		6 => return_vex.extend(&hex_vec),
 		8 => {
-			if color.to_android {
+			if color.android {
 				return_vex.extend(&hex_vec[2..]);
 				return_vex.extend(&hex_vec[0..2]);
 			} else {
@@ -41,11 +42,11 @@ pub fn hex2rgb(color: &Color) -> Result<String, Error> {
 		rgb_string.push(',');
 	}
 
-	if color.to_alpha {
+	if color.alpha {
 		rgb_string.insert_str(0, "rgba(");
 		if hex_vec.len() == 8 {
-			let data = map::map_hex(hex_vec[6]) * 16 + map::map_hex(hex_vec[7]);
-			rgb_string.push_str(&format!("{:.2})", data as f32 / 255f32));
+			let data = (map::map_hex(hex_vec[6]) * 16 + map::map_hex(hex_vec[7])) as f32 / 255f32;;
+			rgb_string.push_str(&format!("{})", utils::round(data, 2)));
 		} else {
 			rgb_string.push_str("1)");
 		}
@@ -55,7 +56,7 @@ pub fn hex2rgb(color: &Color) -> Result<String, Error> {
 		rgb_string.push_str(")");
 	}
 
-	if color.to_upper {
+	if color.upper {
 		Ok(rgb_string.to_uppercase())
 	} else {
 		Ok(rgb_string.to_lowercase())
@@ -66,15 +67,15 @@ pub fn hex2hex(color: &Color) -> Result<String, Error> {
 	let hex_vec = handle_hex_value(&color)?;
 	let mut hex_string = hex_vec.join("");
 
-	if color.to_alpha {
+	if color.alpha {
 		if hex_vec.len() != 8 {
-			if color.to_android {
+			if color.android {
 				hex_string.insert_str(0, "ff");
 			} else {
 				hex_string.push_str("FF");
 			}
 		} else {
-			if color.to_android {
+			if color.android {
 				//hex_string.insert_str(0, &hex_string.pop().unwrap().to_string());
 				hex_string = format!("{}{}", &hex_string[6..8], &hex_string[0..6]);
 			}
@@ -84,7 +85,7 @@ pub fn hex2hex(color: &Color) -> Result<String, Error> {
 	}
 
 	hex_string.insert_str(0, "#");
-	if color.to_upper {
+	if color.upper {
 		Ok(hex_string.to_uppercase())
 	} else {
 		Ok(hex_string.to_lowercase())

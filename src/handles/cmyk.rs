@@ -16,13 +16,13 @@ pub fn cmyk2rgb(color: &Color) -> Result<String, Error> {
 		let g = utils::round(255f32 * (1f32 - m) * (1f32 - k), 0);
 		let b = utils::round(255f32 * (1f32 - y) * (1f32 - k), 0);
 
-		let rgb = if color.to_alpha {
+		let rgb = if color.alpha {
 			format!("rgba({},{},{},1)", r, g, b)
 		} else {
 			format!("rgb({},{},{})", r, g, b)
 		};
 
-		return Ok(if color.to_upper {rgb.to_uppercase()} else {rgb});
+		return Ok(if color.upper {rgb.to_uppercase()} else {rgb});
 	}
 
 	Err(Error::Format)
@@ -46,7 +46,7 @@ pub fn cmyk2cmyk(color: &Color) -> Result<String, Error> {
 	let _ = cmyk2rgb(&color)?; // check format
 	let cmyk = color.to_str();
 
-	Ok(if color.to_upper {cmyk.to_uppercase()} else {cmyk.to_lowercase()})
+	Ok(if color.upper {cmyk.to_uppercase()} else {cmyk.to_lowercase()})
 }
 
 pub fn cmyk2hsv(color: &Color) -> Result<String, Error> {
