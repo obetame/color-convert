@@ -4,6 +4,8 @@ color-convert
 Convert color to each other by rust.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/zhouyuexie/color-convert/blob/master/LICENSE-MIT)
+[![Build Status](https://travis-ci.com/zhouyuexie/color-convert.svg?branch=master)](https://travis-ci.com/zhouyuexie/color-convert)
+[![Latest version](https://img.shields.io/crates/v/color-convert.svg)](https://crates.io/crates/color-convert/)
 
 ## Installation
 
