@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c12e232-deb7-490d-8ed1-338cdc912c3f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/color.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/color.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handles/cmyk.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/cmyk.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handles/hex.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/hex.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handles/hsl.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/hsl.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handles/hsv.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/hsv.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handles/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/handles/rgb.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/color.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/color.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/common.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/common.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/hex.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/hex.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/rgb.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rgb.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/utils.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -63,6 +49,7 @@
           <entry key="rs" value="6861" />
           <entry key="toml" value="10" />
           <entry key="txt" value="10" />
+          <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -71,6 +58,7 @@
           <entry key="PLAIN_TEXT" value="10" />
           <entry key="Rust" value="6863" />
           <entry key="TOML file" value="10" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,6 +69,7 @@
           <entry key="md" value="1" />
           <entry key="rs" value="40" />
           <entry key="toml" value="3" />
+          <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -90,6 +79,7 @@
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Rust" value="40" />
           <entry key="TOML file" value="5" />
+          <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -150,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -158,6 +148,15 @@
                 <caret line="62" column="65" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="682">
+              <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -255,6 +254,7 @@
         <option value="$PROJECT_DIR$/tests/lib.rs" />
         <option value="$PROJECT_DIR$/src/color.rs" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -471,7 +471,7 @@
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542768030288" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542772380412" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -703,14 +703,11 @@
       <workItem from="1542702654926" duration="56000" />
       <workItem from="1542702714540" duration="131000" />
       <workItem from="1542702858169" duration="3000" />
-      <workItem from="1542702911256" duration="6389000" />
+      <workItem from="1542702911256" duration="7474000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_test__test_lib - 2018.11.20 at 18h 17m 18s.xml">
-      <configuration name="Test test::test_lib" configurationId="CargoCommandRunConfiguration" />
-    </history-entry>
     <history-entry file="all-test - 2018.11.20 at 18h 17m 27s.xml">
       <configuration name="all-test" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
@@ -738,15 +735,18 @@
     <history-entry file="all-test - 2018.11.21 at 09h 57m 39s.xml">
       <configuration name="all-test" configurationId="CargoCommandRunConfiguration" />
     </history-entry>
+    <history-entry file="all-test - 2018.11.21 at 10h 42m 21s.xml">
+      <configuration name="all-test" configurationId="CargoCommandRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135055000" />
+    <option name="totallyTimeSpent" value="136140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17224881" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17224881" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Learn" order="2" />
       <window_info id="Designer" order="3" />
@@ -995,6 +995,13 @@
             <caret line="62" column="65" selection-start-line="62" selection-start-column="65" selection-end-line="62" selection-end-column="65" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
         </state>
       </provider>
     </entry>
